@@ -1,0 +1,78 @@
+@import 'lib';
+
+fieldset {
+    border: 0;
+    padding: 0;
+}
+.rcp_form label {
+    // font-family: var(--font-heading);
+}
+
+#rcp_subscription_levels {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2em;
+
+    li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.rcp-table-wrapper {
+    h3 {
+        font-size: 1.1em;
+    }
+    table {
+        th {
+            text-align: left;
+            vertical-align: text-top;
+        }
+        th, td {
+            // font-family: var(--font-body);
+        }
+        button {
+            white-space: nowrap;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        @include media( mobile ) {
+            overflow-x: scroll;
+            display: block;
+        }
+    }
+}
+
+#rcp_payment_gateways {
+    label + label {
+        margin-left: 1em;
+    }
+}
+
+#rcp-payment-history {
+}
+
+.rcp_sub_details_renew {
+    text-decoration: none !important;
+    button {
+        // display: block;
+        // width: 100%;
+    }
+}
+
+
+/* rcp msg */
+.rcp__msg {
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 3em;
+    h2 {
+    }
+    .button56 {
+        display: inline-block;
+        a {
+            text-decoration: none !important;
+        }
+    }
+}

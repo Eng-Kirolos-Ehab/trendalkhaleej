@@ -1,0 +1,145 @@
+/** TOC
+
+01. common
+
+    1. root values
+    2. helpful classes
+    3. general settings
+    4. form, input
+    5. button
+    6. layout
+    7. blockquote
+    8. media
+    9. misc
+
+02. header
+
+    1. general
+    2. 
+    3. logo
+    4. menu
+    5. social
+    6. search
+    7. cart
+    8. hamburger
+    9. darkmode switcher
+    10. offcanvas
+
+    15. minimal header
+    16. sticky header
+
+03. footer
+
+    1. footer sidebar
+    2. footer bottom
+    3. footer logo
+    4. footer menu
+    5. footer social
+    6. footer search
+    7. copyright
+    8. scroll up
+
+04. blog
+
+    1. general
+    2. pagination
+    3. grid
+    4. list
+    5. masonry
+    6. group
+    7. carousel
+    8. titlebar
+    9. toparea
+    10. search page
+    11. page 404
+
+05. widgets
+
+    1. general
+    2. text
+    3. search
+    4. calendar
+    5. FOX - social
+    6. FOX - about
+    7. list
+    8. tagcloud
+    9. facebook
+    10. pinterest
+    11. authorlist
+    12. image box
+    13. image text
+    14. mailchimp
+    15. authorbox
+    16. posts
+    17. instagram
+
+06. builder
+
+    1. general
+    2. heading
+    3. ads
+    4. authors
+    5. sidebar
+    6. newsletter
+    7. sep
+    8. spacer
+
+07. single
+
+    1. general & padding
+    2. header: title, subtitl
+    3. content
+    4. thumbnail
+    5. review
+    6. sponsor
+    7. progress
+    8. TOC
+    9. tags
+    10. author box
+    11. nav
+    12. share
+    13. related
+    14. comments
+    15. bottom posts
+    16. sidedock
+    20. hero post
+
+08. dark mode
+
+09. misc
+    
+site map
+    pricing table
+
+10. plugins
+    
+    1. contact form 7
+    2. mailchimp for wp
+    3. elementor
+
+*/
+
+/* 1. lib
+---------------------------------------------------------------------- */
+@import 'utilities'; // mandatory
+@import 'icon56'; // mandatory
+@import 'microtip'; // mandatory
+@import 'lightbox'; // casual
+@import 'flickity'; // casual
+
+/* 2. theme
+---------------------------------------------------------------------- */
+@import 'reset'; // mandatory
+@import 'common'; // 34k
+@import 'header'; // 29k
+@import 'footer'; // 11k
+@import 'blog'; // 38k post, archive
+@import 'widgets'; // classic widgets 32k
+@import 'builder'; // 10k 
+@import 'single'; // 58k
+@import 'darkmode'; // 5k
+@import 'misc'; // 5k
+
+/* 3. plugin
+---------------------------------------------------------------------- */
+@import 'plugins'; // 7k

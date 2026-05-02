@@ -1,0 +1,190 @@
+== v6.6.2.1 ==
+- feature: add Polylang compatibility to The Fox v6
+- fix: body background image not fullsize image
+- fix: header button style not working issues
+- fix: .align-wide overflow on screen width around ~ 980x
+- fix: thumbnail indicator format, post view, review not showing
+- fix: youtube video ratio
+- fix: email share not working Safari (thanks Marina for the code)
+
+== v6.7 ==
+- feature: builder additional query option: https://fox.withemes.com/documentation/builder/builder-post-additional-query/
+- feature: builder custom query option: https://fox.withemes.com/documentation/builder/builder-post-custom-query/
+- feature: image caption link color
+- feature: add dark mode switcher style + dark mode swticher options
+- feature: off-canvas submenu options
+- feature: off-canvas overlay background option
+- feature: sidebar widget title margin option
+- feature: sidebar widget spacing
+- feature: add share icon border option
+- feature: single post content/sidebar sep border option
+
+- enhancement: improve Fox query to make it faster
+- enhancement: more beautiful Gutenberg editor and Classic editor for writing mood
+- enhancement: single post layout easier to work with
+- enhancement: guide for options in Customizer to find them easier
+- enhancement: better dark mode switcher icon
+- enhancement: offcanvas menu showing up sliding effect
+- enhancement: load menu more efficient
+- enhancement: .container width on mobile padding exactly 10px
+- enhancement: dark mode borders, colors
+- enhancement: make flying search looks better
+- enhancement: reorganize option structure + docs right in the Customizer
+
+- fix: woocommerce css precedence issue
+- fix: exclude featured posts not working in home builder
+- fix: ad element not showing after being added to Customizer
+- fix: remove default via @withemes from Twitter share
+- fix: top area posts being excluded by RSS feed
+- fix: ( masonry + big post first ) not responsive on mobile
+- fix: footer menu loads more than 1 levels
+- fix: mega menu posts being rendered for non-primary menus
+- fix: style for gutenberg category list, archive list on sidebar
+- deprecated: Footer newsletter sidebar. Please use "Footer top" sidebar
+
+== v6.7.0.1 ==
+- fix: list widget bullet
+- fix: icon font being cached
+
+== v6.7.0.2 ==
+- fix paginated comments
+- fix Polylang heading not translated
+
+== v6.7.1 ==
+- feature: Los Angeles demo
+- feature: new builder widget: authors
+- feature: builder: spacing option between cols
+- feature: builder: separator option between cols
+- feature: allow to use custom meta key for subtitle
+- feature: allow layout author avatar + date for single post meta
+- enhancement: single comment section looks cooler
+- enhancement: author "by" word looks better
+- enhancement: number of comments looks cooler
+- enhancement: improve accessibility for links
+- enhancement: caption on mobile 100%
+- support lightbox for *avif file
+- fix: list widget font not working
+- fix: builder heading widget padding issue on mobile
+- fix: posts not showing in sub-category when parent category being selected
+
+== v6.7.2 ==
+- fix: author name not translated in meta
+- fix: select element in darkmode
+- fix: 3 widgets on mobile not working
+- fix: customizer icons after WP 6.7.x
+- fix: single post nav doesn't have aria label
+- fix: translation register
+
+== v6.7.3 ==
+- add bluesky icon
+- fix post format option not working in the backend sometimes
+
+== v6.8 ==
+- add: json settings option for each column in post group
+- add logged-in user text option for header buttons
+- add page sidebar replacement option
+- add shortcode [logged_in]
+- add membership/paid reading: compatibility with Restrict content pro plugin
+- add [fox_authors /] shortcode
+- add column vertical spacing for for row/column in homepage builder
+- add single-after-content sidebar to add Donate button or newsletter form
+- add section background option in darkmode
+- add darkmode-switcher option to offcanvas menu
+- add darkmode only-icon option
+- add plain button style
+- add [fox_post_index] shortcode
+- add support for Easy Table of content plugin
+- add easy pricing table CSS support with "pricing" class added to gutenberg columns custom class
+- add footer sidebar widgets spacing option
+- add: option to display single share icons along with post header meta 
+- enhancement: dark mode better
+- enhancement: much better single post spacing between elements.
+- enhancement: convert Fox Mailchimp --> Fox Newsletter, allows other newsletter shortcode options
+- enhancement: mobile css better
+- enhancement: page 404 looks better
+- fix: pagelist widget not styled
+- fix: various minor issues
+- fix: widgets not being imported properly 
+- fix: sidebar widgets css of homepage builder
+
+== v6.8.1 ==
+- add: global option to disable single post comments
+- add: builder post excerpt text align option
+- add: builder post excerpt text column option
+- add ordered number for post list
+- add: allow to display only-titles after post excerpt
+- add: allow to enter custom font name from third-party vendors like typekit, fonts.com..
+- add: add subscribe form widget to the builder
+- add: dark mode border color option
+- add: header border bottom for single post only
+- enhancement: use <span> tag for menu post for better SEO
+- enhancement: clickable link for on-top post-style
+- enhancement: compatibility with WordPress v6.7.2
+- fix: dark mode in boxed layout
+- fix: category in single post header not showing up
+- fix: dark mode logo not being centered
+- fix dark mode logo + hero post
+- fix: post background covered equally in post group
+- fix: author box background in dark mode
+
+== v6.9 ==
+- add: Washington demo
+- add: allow to use custom_params everywhere in the theme: post list widget, related posts, bottom posts, top-area
+- add: youtube video playable thumbnail for the homepage builder
+- add: bluesky share, threads share button to single post
+- add: add bluesky, mastodon, threads social URL option for post authors
+- add: author box social icon size option
+- add: option to set single post header narrow/wide
+- enhancement: dark mode better, fix minor issues
+- fix: pagination font size option not working
+- fix: masonry 1st post in dark mode
+- fix: image align center not center & stretched, not align center on mobile
+- depreated: single HTML, replaced by After post content sidebar
+
+== v6.9.1 ==
+- add: Paris demo
+- add: darkmode switcher labels in Quick Translate
+- add: content - siderbar spacing option
+- add: option for single post container width
+- enhancement: compatibility with WordPress v6.8
+- fix "Swich" typo for darkmode switcher
+- fix: search dropdown z-index
+- fix: brand color for bluesky, threads
+
+== v6.9.5 ==
+- improve Customizer UX: 
+    - better hints.
+    - move few sections to correct locations (header hero -> single post, general -> misc)
+    - restore default wordpress sections (homepage_settings, logo_tagline)
+    - delete widget right in widget settings
+    - add section/element more meaningful
+    - add more elements: WYSWYG editor, image
+    - add background image option for section
+    - add more section/element templates
+    - fix: sortable issue after importing
+    - improve UI overall
+
+== v6.8.3 - todo ==
+// improve off-canvas menu
+// more templates
+// image option for the heading
+// search form height option
+// tagline on mobile
+// visible menu on mobile
+// another header menu
+// https://themeforest.net/item/the-fox-contemporary-magazine-theme-for-creators/11103012/comments?page=1&filter=all#comment_31223832
+// social share counter
+
+== todo ==
+// enhancement: better onboard experience
+// enhancement: better theme option organization
+// fix accessibility : https://withemes.ticksy.com/ticket/3758298/
+// feature: scroll up button size, icon size
+// feature: add custom social icon
+// feature: support Substack and more social network
+// footer top sidebar
+// single post ad easier
+// single post newsletter
+// enhancement: feature search
+// better on board experience
+// dynamic fields

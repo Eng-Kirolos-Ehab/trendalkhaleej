@@ -1,0 +1,142 @@
+@import '../lib';
+
+/* SECTION SIDEBAR
+ * @since 4.4
+-------------------------------------------------------------------------------------- */
+.section-sidebar-inner {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    
+    margin: -40px -20px 0;
+
+    @include media (mobile) {
+        margin: 0;
+    }
+}
+.main-section-sidebar {
+    overflow: hidden;
+
+    .widget,
+    .widget + .widget {
+        flex: none;
+        padding: 40px 20px 0;
+        margin: 0 !important;
+        border: 0 !important;
+
+        @include media (mobile) {
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 10px;
+        }
+    }
+}
+.main-section-sidebar-1 {
+    .widget {
+        width: 100%;
+    }
+}
+.main-section-sidebar-2 {
+    .widget {
+        width: 50%;
+    }
+    @include media( mobile-small ) {
+        .section-sidebar-inner {
+            margin: 0;
+        }
+        .widget {
+            width: 100%;
+            padding: 0;
+            
+            & + .widget {
+                margin-top: 20px !important;
+            }
+        }
+    }
+}
+.main-section-sidebar-3 {
+    .widget {
+        width: 33.33%;
+    }
+    
+    @include media( mobile ) {
+        .section-sidebar-inner {
+            margin: 0;
+        }
+        .widget {
+            width: 100%;
+            padding: 0;
+            
+            & + .widget {
+                margin-top: 20px !important;
+            }
+        }
+    }
+}
+.main-section-sidebar-4 {
+    
+    .widget {
+        width: 25%;
+    }
+    
+    @include media( tablet ) {
+        .section-sidebar-inner {
+            margin: -20px -10px 0;
+        }
+        .widget,
+        .widget + .widget {
+            width: 50%;
+            padding: 20px 10px 0;
+        }
+    }
+    
+    @include media( mobile ) {
+        .section-sidebar-inner {
+            margin: 0;
+        }
+        .widget {
+            width: 100%;
+            padding: 0;
+            
+            & + .widget {
+                margin-top: 20px !important;
+            }
+        }
+    }
+    
+}
+
+/* Newsletter - since 6.8.1
+-------------------------------------------------------------------------------------- */
+.newsletter56--inline .newsletter56__inner {
+    .mc4wp-form-fields {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > * {
+            display: block;
+            max-width: 300px;
+            padding-left: 4px;
+            padding-right: 4px;
+            margin: 0;
+        }
+
+        @include media( mobile ) {
+            display: block;
+            > * {
+                max-width: 100%;
+                padding: 0;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
+.newsletter56--stack .newsletter56__inner {
+    .mc4wp-form-fields {
+    }
+    input[type="submit"],
+    button {
+        width: 100%;
+    }
+}

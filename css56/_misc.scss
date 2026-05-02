@@ -1,0 +1,312 @@
+#wpstats {
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+// legacy
+.wi-button {
+    display: table;
+    margin: 0 auto;
+    width: 50%;
+    .wi-btn {
+        text-align: center;
+    }
+}
+
+/* svg comment icon
+---------------------------------------------------------------------- */
+.fox56__css__icon__comment {
+    width: 16px;
+}
+
+/* block
+---------------------------------------------------------------------- */
+.single-fox_block {
+    .site-content {
+        min-height: 100vh;
+    }
+}
+.demonstration {
+    display: block;
+    background: #000;
+    color: #fc0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    p {
+        margin: 0;
+    }
+}
+
+.fox-library-modal-btn {
+    margin-left: 5px;
+    background: #000;
+    color: white;
+    vertical-align: top;
+}
+.fox-library-modal-btn:before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/foxhead.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+.elementor-add-new-section .elementor-add-section-area-button.fox-library-modal-btn {
+    width: auto;
+    font-size: 14px;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    background: #006ba1;
+    color: white;
+    border-radius: 0;
+    padding: 0 10px;
+    
+    display: flex;
+    align-items: center;
+}
+
+/* template
+---------------------------------------------------------------------- */
+@include media( mobile ) {
+    .archive-builder,
+    .single-builder {
+        .container {
+            max-width: 100%;
+        }
+    }
+}
+
+/* elementor image box
+---------------------------------------------------------------------- */
+.elementor-image-box-title {
+    margin-top: 0;
+}
+
+
+/* homebuilder widget edit button
+---------------------------------------------------------------------- */
+.widget56__edit {
+    position: absolute;
+    background: #2271b1;
+    box-shadow: 0 2px 3px rgba(0,0,0,.1);
+    color: white;
+    z-index: 999;
+    line-height: 28px;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    text-decoration: none;
+    text-transform: none;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0 8px;
+    cursor: pointer;
+
+    top: 0px;
+    left: 90%;
+    transform: translate(-50%,0);
+
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+
+    &:hover {
+        box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+
+    i {
+        margin-left: 1px;
+        font-size: 14px;
+        display: inline-block;
+        line-height: inherit;
+    }
+}
+.widget56:hover > .widget56__edit {
+    opacity: 1;
+    visibility: visible;
+}
+[data-widget="section"] > .widget56__edit {
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+[data-widget="row"] > .widget56__edit {
+    top: -20px;
+    left: 10px;
+    transform: none;
+}
+[data-widget="column"] > .widget56__edit {
+    top: 10px;
+    left: 20px;
+    transform: none;
+}
+
+// in customizer
+.customize-partial-edit-shortcuts-shown {
+    .focused {
+        outline: 1px solid #2271b1;
+        box-shadow: 2px 3px 10px #2271b1;
+    }
+    .widget56__edit {
+        display: block;
+    }
+    .widget56 {
+        position: relative;
+        overflow: visible;
+        min-height: 20px;
+
+        &.heading56 {
+            overflow: hidden;
+        }
+
+        &:hover {
+            outline: 1px solid #2271b1;
+            box-shadow: 2px 3px 10px #2271b1;
+        }
+
+        // we don't use this
+        .customize-partial-edit-shortcut {
+            display: none !important;
+        }
+    }
+
+    .section56,
+    .row56 {
+        min-height: 20px;
+    }
+}
+
+/* mobile stretch
+---------------------------------------------------------------------- */
+.mobile-stretch {
+    .blog56--grid--mobile--1cols .thumbnail56 {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    .blog56--group {
+        overflow: visible;
+    }
+}
+
+/* site map
+---------------------------------------------------------------------- */
+.fox56__sitemap {
+    display: block;
+}
+.fox56__sitemap__item + .fox56__sitemap__item {
+    margin-top: 3em;
+}
+.fox56__sitemap__item {
+    display: flex;
+    flex-flow: row;
+    h2 {
+        width: 18%;
+        margin: 0;
+        flex: none;
+        font-size: 1.5em;
+        sup {
+            opacity: 0.4;
+        }
+
+        @include media( mobile ) {
+            width: 60px;
+            font-size: 1.2em;
+        }
+    }
+    ul {
+        display: block;
+        list-style: none;
+        margin: 0;
+        width: calc(100% - 18%);
+        flex: none;
+
+        @include media( mobile ) {
+            width: calc(100% - 60px);
+        }
+    }
+    li {
+        display: flex;
+        flex-flow: row;
+        align-items: flex-start;
+        strong {
+            width: 80px;
+            display: block;
+        }
+        a {
+            display: block;
+            // line-height: 1.2;
+            width: calc(100% - 80px);
+        }
+
+        &.li-hide-month strong {
+            opacity: 0;
+        }
+    }
+    li + .li-has-month {
+        margin-top: 10px;
+    }
+    a {
+        color: inherit;
+        text-decoration: none !important;
+        &:hover {
+            color: inherit;
+            text-decoration: underline !important;
+        }
+    }
+}
+
+/* pricing
+---------------------------------------------------------------------- */
+.pricing.wp-block-columns {
+    .wp-block-column {
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 2em;
+        box-shadow: 1px 2px 3px rgba(0,0,0,.05);
+    }
+    h3 {
+        border-bottom: 1px solid var(--border-color);
+        font-size: 1em;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+    }
+    ul {
+        list-style: none;
+        margin-left: 0;
+        padding: 0;
+        li {
+            display: block;
+        }
+        li + li {
+            margin-top: 0.4em;
+        }
+    }
+}
+
+.darkmode {
+    .pricing.wp-block-columns {
+        .wp-block-column,
+        h3 {
+            border-color: var(--darkmode-border-color);
+        }
+    }
+}

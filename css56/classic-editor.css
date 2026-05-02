@@ -1,0 +1,112 @@
+@charset "UTF-8";
+:root {
+  --body-font: georgia, Times, serif;
+  --heading-font: Helvetica, Arial, sans-serif;
+}
+
+/* heading
+---------------------------------------- */
+h2 {
+  font-size: 2.4em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* post content
+---------------------------------------- */
+#tinymce {
+  font-family: var(--body-font);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 19px;
+  line-height: 1.58;
+  /* link
+  ---------------------------------------- */
+}
+#tinymce a {
+  color: blue;
+}
+/* image
+---------------------------------------- */
+figcaption {
+  font-family: var(--heading-font);
+  font-size: 0.8em;
+  color: #777;
+}
+
+/* gallery
+---------------------------------------- */
+/* blockquote
+---------------------------------------- */
+blockquote {
+  font-style: italic;
+  padding: 0.15em 1em;
+  margin: 1em auto;
+  padding-left: 20px;
+  border-left: 3px solid;
+  font-size: 1.1em;
+  line-height: 1.3;
+}
+blockquote p {
+  line-height: inherit;
+  font-size: 1em;
+}
+blockquote cite {
+  display: block;
+  font-size: 14px;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+blockquote cite::before {
+  content: "—";
+  padding-right: 0.6em;
+  font-size: 1.2em;
+  line-height: 1em;
+}
+
+@media only screen and (max-width: 840px) {
+  blockquote {
+    padding: 0 1em;
+    font-size: 1.2em;
+  }
+}
+/* List
+---------------------------------------- */
+/* Pre/code
+---------------------------------------- */
+pre {
+  background: #f2f2f2;
+  font-family: inherit;
+  margin-bottom: 2em;
+  padding: 1.25em;
+  overflow: auto;
+  border: 1px solid #E5E5E5;
+  background: #F9F9F9;
+  white-space: pre;
+  font-size: 14px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+@media only screen and (max-width: 840px) {
+  pre {
+    margin-bottom: 1.25em;
+    padding: 1em;
+  }
+}
+code {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+  padding: 0.15em;
+  border-radius: 2px;
+}/*# sourceMappingURL=classic-editor.css.map */

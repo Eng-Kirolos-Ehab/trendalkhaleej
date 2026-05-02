@@ -1,0 +1,885 @@
+/**
+ * Fox Theme - RTL (Right-to-Left) Stylesheet
+ * For Arabic, Hebrew, Persian and other RTL languages
+ * Version: 1.0.0
+ * 
+ * This file is automatically loaded when WordPress is set to an RTL language
+ */
+
+/* ==========================================================================
+   1. BASE RTL SETTINGS
+   ========================================================================== */
+
+body {
+    direction: rtl;
+    unicode-bidi: embed;
+    text-align: right;
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & TEXT ALIGNMENT
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6,
+p, li, td, th, label, span,
+.entry-content, .widget-title,
+.post-title, .page-title {
+    text-align: right;
+}
+
+/* Text alignment utility classes */
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+
+/* Body alignment classes from Customizer */
+body.fox-align-right { text-align: right; }
+body.fox-align-left { text-align: left; }
+body.fox-align-center { text-align: center; }
+
+/* ==========================================================================
+   3. LAYOUT - MARGIN & PADDING SWAP
+   ========================================================================== */
+
+/* Generic margin swaps */
+.ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+.mr-auto { margin-right: 0 !important; margin-left: auto !important; }
+
+/* Float reversals */
+.float-left, .alignleft { float: right !important; }
+.float-right, .alignright { float: left !important; }
+
+/* Clearfix for RTL */
+.clearfix::after {
+    clear: both;
+}
+
+/* ==========================================================================
+   4. HEADER STYLES
+   ========================================================================== */
+
+/* Main header */
+.header-wrapper,
+.site-header,
+#masthead {
+    direction: rtl;
+}
+
+/* Logo positioning */
+.site-branding,
+.header-logo,
+.logo-wrapper {
+    float: right;
+    text-align: right;
+}
+
+/* Header elements order */
+.header-right,
+.header-icons {
+    float: left;
+}
+
+.header-left {
+    float: right;
+}
+
+/* ==========================================================================
+   5. NAVIGATION MENUS
+   ========================================================================== */
+
+/* Main navigation */
+.main-navigation,
+.primary-menu,
+.nav-menu,
+#site-navigation {
+    direction: rtl;
+    text-align: right;
+}
+
+.main-navigation ul {
+    text-align: right;
+}
+
+.main-navigation ul li {
+    float: right;
+    text-align: right;
+}
+
+.main-navigation ul ul {
+    left: auto;
+    right: 0;
+}
+
+/* Sub-menu positioning */
+.main-navigation ul ul ul {
+    left: auto;
+    right: 100%;
+}
+
+.main-navigation li:hover > ul,
+.main-navigation li.focus > ul {
+    left: auto;
+    right: 0;
+}
+
+/* Menu item padding */
+.main-navigation a,
+.nav-menu a {
+    padding-left: 15px;
+    padding-right: 0;
+}
+
+.main-navigation ul ul a {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Dropdown arrows */
+.menu-item-has-children > a::after,
+.nav-menu .menu-item-has-children > a::after {
+    margin-left: 0;
+    margin-right: 8px;
+    transform: rotateY(180deg);
+}
+
+/* Mobile menu */
+.mobile-menu,
+.mobile-navigation {
+    direction: rtl;
+    text-align: right;
+}
+
+.mobile-menu-toggle {
+    float: left;
+}
+
+/* Off-canvas menu */
+.offcanvas-menu,
+.off-canvas {
+    left: auto;
+    right: -300px;
+}
+
+.offcanvas-menu.active,
+.off-canvas.active {
+    right: 0;
+}
+
+/* ==========================================================================
+   6. SEARCH BOX
+   ========================================================================== */
+
+.search-form,
+.searchform {
+    direction: rtl;
+}
+
+.search-form input[type="search"],
+.search-form input[type="text"],
+.searchform input[type="search"],
+.searchform input[type="text"] {
+    text-align: right;
+    padding-left: 45px;
+    padding-right: 15px;
+}
+
+.search-form button,
+.search-form .search-submit,
+.searchform button,
+.searchform .search-submit {
+    left: 0;
+    right: auto;
+}
+
+/* Header search */
+.header-search {
+    float: left;
+}
+
+.header-search .search-form {
+    left: auto;
+    right: 0;
+}
+
+/* ==========================================================================
+   7. SOCIAL ICONS
+   ========================================================================== */
+
+.social-icons,
+.social-links,
+.social-nav {
+    direction: rtl;
+}
+
+.social-icons li,
+.social-links li {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.social-icons li:last-child,
+.social-links li:last-child {
+    margin-left: 0;
+}
+
+/* Header social */
+.header-social {
+    float: left;
+}
+
+/* Footer social */
+.footer-social {
+    text-align: right;
+}
+
+/* ==========================================================================
+   8. WIDGETS
+   ========================================================================== */
+
+/* Widget containers */
+.widget,
+.sidebar .widget,
+.footer-widgets .widget {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Widget titles */
+.widget-title,
+.widgettitle {
+    text-align: right;
+}
+
+/* Widget lists */
+.widget ul,
+.widget ol {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.widget ul li,
+.widget ol li {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Widget list bullets */
+.widget ul li::before {
+    left: auto;
+    right: 0;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Categories widget */
+.widget_categories ul li,
+.widget_archive ul li {
+    text-align: right;
+}
+
+.widget_categories ul li span.count,
+.widget_archive ul li span {
+    float: left;
+}
+
+/* Recent posts widget */
+.widget_recent_entries li,
+.wi-recent-posts li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.widget_recent_entries .post-date {
+    float: left;
+}
+
+/* Tag cloud */
+.tagcloud a,
+.widget_tag_cloud a {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Calendar widget */
+.widget_calendar table {
+    direction: rtl;
+}
+
+/* ==========================================================================
+   9. NEWSLETTER / SUBSCRIBE FORM
+   ========================================================================== */
+
+.newsletter-form,
+.subscribe-form,
+.mc4wp-form {
+    direction: rtl;
+    text-align: right;
+}
+
+.newsletter-form input[type="email"],
+.subscribe-form input[type="email"],
+.mc4wp-form input[type="email"] {
+    text-align: right;
+    padding-left: 120px;
+    padding-right: 15px;
+}
+
+.newsletter-form button,
+.subscribe-form button,
+.mc4wp-form button {
+    left: 0;
+    right: auto;
+}
+
+/* ==========================================================================
+   10. BLOG POSTS & ARCHIVES
+   ========================================================================== */
+
+/* Post meta */
+.entry-meta,
+.post-meta {
+    direction: rtl;
+    text-align: right;
+}
+
+.entry-meta span,
+.post-meta span {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.entry-meta span:last-child,
+.post-meta span:last-child {
+    margin-left: 0;
+}
+
+/* Post meta icons */
+.entry-meta i,
+.post-meta i {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Post thumbnail */
+.post-thumbnail,
+.entry-thumbnail {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+/* Post content */
+.entry-content,
+.post-content {
+    text-align: right;
+}
+
+/* Post categories */
+.cat-links,
+.category-links {
+    text-align: right;
+}
+
+.cat-links a {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Post tags */
+.tag-links,
+.tags-links {
+    text-align: right;
+}
+
+.tag-links a {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* Post navigation */
+.post-navigation .nav-previous {
+    float: right;
+    text-align: right;
+}
+
+.post-navigation .nav-next {
+    float: left;
+    text-align: left;
+}
+
+/* Archive/blog layout */
+.post-list .post,
+.blog-posts .post {
+    direction: rtl;
+}
+
+/* Grid layout */
+.post-grid .post {
+    float: right;
+}
+
+/* ==========================================================================
+   11. SINGLE POST
+   ========================================================================== */
+
+/* Author box */
+.author-box,
+.author-info {
+    direction: rtl;
+    text-align: right;
+}
+
+.author-avatar {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.author-bio {
+    text-align: right;
+}
+
+/* Share buttons */
+.share-buttons,
+.social-share {
+    direction: rtl;
+    text-align: right;
+}
+
+.share-buttons a,
+.social-share a {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Related posts */
+.related-posts {
+    direction: rtl;
+}
+
+.related-posts .post {
+    float: right;
+}
+
+/* ==========================================================================
+   12. COMMENTS
+   ========================================================================== */
+
+.comments-area {
+    direction: rtl;
+    text-align: right;
+}
+
+.comment-list {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.comment-list .comment {
+    direction: rtl;
+}
+
+.comment-list .children {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+.comment-author .avatar {
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.comment-content {
+    text-align: right;
+}
+
+.comment-reply-link {
+    float: left;
+}
+
+/* Comment form */
+.comment-form {
+    direction: rtl;
+}
+
+.comment-form label {
+    text-align: right;
+}
+
+.comment-form input,
+.comment-form textarea {
+    text-align: right;
+}
+
+/* ==========================================================================
+   13. SIDEBAR
+   ========================================================================== */
+
+/* Sidebar positioning */
+.content-sidebar .sidebar,
+.sidebar-right .sidebar {
+    float: left;
+}
+
+.sidebar-content .sidebar,
+.sidebar-left .sidebar {
+    float: right;
+}
+
+.content-sidebar .content-area,
+.sidebar-right .content-area {
+    float: right;
+}
+
+.sidebar-content .content-area,
+.sidebar-left .content-area {
+    float: left;
+}
+
+/* ==========================================================================
+   14. FOOTER
+   ========================================================================== */
+
+/* Footer layout */
+.site-footer,
+#colophon {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Footer widgets */
+.footer-widgets {
+    direction: rtl;
+}
+
+.footer-widgets .widget {
+    float: right;
+}
+
+/* Footer menu */
+.footer-navigation,
+.footer-menu {
+    direction: rtl;
+    text-align: right;
+}
+
+.footer-navigation ul li,
+.footer-menu ul li {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.footer-navigation ul li:last-child,
+.footer-menu ul li:last-child {
+    margin-left: 0;
+}
+
+/* Copyright */
+.site-info,
+.copyright {
+    text-align: right;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    direction: rtl;
+}
+
+.footer-bottom .copyright {
+    float: right;
+}
+
+.footer-bottom .footer-menu {
+    float: left;
+}
+
+/* ==========================================================================
+   15. SLIDERS & CAROUSELS
+   ========================================================================== */
+
+/* Slick slider RTL */
+.slick-slider {
+    direction: rtl;
+}
+
+.slick-slide {
+    float: right;
+}
+
+.slick-track {
+    direction: rtl;
+}
+
+/* Slider navigation */
+.slick-prev,
+.slider-prev,
+.carousel-prev {
+    left: auto;
+    right: 10px;
+    transform: rotateY(180deg);
+}
+
+.slick-next,
+.slider-next,
+.carousel-next {
+    right: auto;
+    left: 10px;
+    transform: rotateY(180deg);
+}
+
+/* Flickity slider */
+.flickity-slider {
+    direction: rtl;
+}
+
+.flickity-prev-next-button.previous {
+    left: auto;
+    right: 10px;
+    transform: rotateY(180deg);
+}
+
+.flickity-prev-next-button.next {
+    right: auto;
+    left: 10px;
+    transform: rotateY(180deg);
+}
+
+/* Flexslider */
+.flexslider {
+    direction: rtl;
+}
+
+.flex-direction-nav .flex-prev {
+    left: auto;
+    right: 10px;
+    transform: rotateY(180deg);
+}
+
+.flex-direction-nav .flex-next {
+    right: auto;
+    left: 10px;
+    transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+   16. PAGINATION
+   ========================================================================== */
+
+.pagination,
+.nav-links {
+    direction: rtl;
+    text-align: right;
+}
+
+.pagination .page-numbers,
+.nav-links .page-numbers {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.pagination .prev,
+.nav-links .prev {
+    transform: rotateY(180deg);
+}
+
+.pagination .next,
+.nav-links .next {
+    transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+   17. FORMS
+   ========================================================================== */
+
+form {
+    direction: rtl;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+textarea,
+select {
+    text-align: right;
+    direction: rtl;
+}
+
+label {
+    text-align: right;
+    display: block;
+}
+
+/* Checkbox and radio */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+/* Button alignment */
+button,
+input[type="submit"],
+input[type="button"] {
+    float: right;
+}
+
+/* ==========================================================================
+   18. BREADCRUMBS
+   ========================================================================== */
+
+.breadcrumbs,
+.breadcrumb {
+    direction: rtl;
+    text-align: right;
+}
+
+.breadcrumbs span,
+.breadcrumb span {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.breadcrumbs .separator,
+.breadcrumb .separator {
+    transform: rotateY(180deg);
+    display: inline-block;
+}
+
+/* ==========================================================================
+   19. ICONS & ARROWS
+   ========================================================================== */
+
+/* Arrow icons - flip horizontally */
+.icon-arrow-left,
+.icon-arrow-right,
+.fa-arrow-left,
+.fa-arrow-right,
+.fa-chevron-left,
+.fa-chevron-right,
+.fa-angle-left,
+.fa-angle-right,
+[class*="icon-arrow"],
+[class*="icon-chevron"] {
+    transform: rotateY(180deg);
+}
+
+/* Feather icons */
+.feather-arrow-left,
+.feather-arrow-right,
+.feather-chevron-left,
+.feather-chevron-right {
+    transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+   20. UTILITIES & HELPERS
+   ========================================================================== */
+
+/* Direction utilities */
+.direction-ltr { direction: ltr !important; }
+.direction-rtl { direction: rtl !important; }
+
+/* Pull classes */
+.pull-left { float: right !important; }
+.pull-right { float: left !important; }
+
+/* Position swaps */
+.left-0 { left: auto !important; right: 0 !important; }
+.right-0 { right: auto !important; left: 0 !important; }
+
+/* Border swaps */
+.border-left { border-left: none !important; border-right: 1px solid !important; }
+.border-right { border-right: none !important; border-left: 1px solid !important; }
+
+/* ==========================================================================
+   21. WOOCOMMERCE RTL (if active)
+   ========================================================================== */
+
+.woocommerce,
+.woocommerce-page {
+    direction: rtl;
+}
+
+.woocommerce ul.products li.product {
+    float: right;
+}
+
+.woocommerce .products .star-rating {
+    float: right;
+}
+
+.woocommerce .woocommerce-ordering {
+    float: right;
+}
+
+.woocommerce .woocommerce-result-count {
+    float: left;
+}
+
+.woocommerce-cart-form,
+.woocommerce-checkout {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ==========================================================================
+   22. RESPONSIVE RTL ADJUSTMENTS
+   ========================================================================== */
+
+@media screen and (max-width: 1024px) {
+    .main-navigation ul li {
+        float: none;
+    }
+    
+    .main-navigation ul ul {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .site-branding {
+        float: none;
+        text-align: center;
+    }
+    
+    .header-right,
+    .header-left {
+        float: none;
+        text-align: center;
+    }
+    
+    .footer-widgets .widget {
+        float: none;
+    }
+    
+    .post-thumbnail {
+        float: none;
+        margin: 0 0 20px 0;
+    }
+    
+    .sidebar,
+    .content-area {
+        float: none;
+    }
+}
+
+/* ==========================================================================
+   23. PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    body {
+        direction: rtl;
+        text-align: right;
+    }
+}

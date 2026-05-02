@@ -1,0 +1,460 @@
+/**
+ * Fox Theme - Widget RTL Styles
+ * Comprehensive RTL support for all widgets
+ * 
+ * @package Fox
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   1. BASE WIDGET RTL
+   ========================================================================== */
+
+/* RTL Enhanced Widget Container */
+.fox-widget-rtl-enhanced {
+    direction: rtl;
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced.fox-dir-ltr {
+    direction: ltr;
+    text-align: left;
+}
+
+/* ==========================================================================
+   2. TEXT ALIGNMENT CLASSES
+   ========================================================================== */
+
+.fox-text-right,
+.fox-text-right .widget-content,
+.fox-text-right .post56 {
+    text-align: right !important;
+}
+
+.fox-text-left,
+.fox-text-left .widget-content,
+.fox-text-left .post56 {
+    text-align: left !important;
+}
+
+.fox-text-center,
+.fox-text-center .widget-content,
+.fox-text-center .post56 {
+    text-align: center !important;
+}
+
+/* Title Alignment */
+.fox-title-right .widget-title,
+.fox-title-right .widgettitle {
+    text-align: right !important;
+}
+
+.fox-title-left .widget-title,
+.fox-title-left .widgettitle {
+    text-align: left !important;
+}
+
+.fox-title-center .widget-title,
+.fox-title-center .widgettitle {
+    text-align: center !important;
+}
+
+/* ==========================================================================
+   3. DIRECTION CLASSES
+   ========================================================================== */
+
+.fox-dir-rtl {
+    direction: rtl !important;
+}
+
+.fox-dir-ltr {
+    direction: ltr !important;
+}
+
+/* ==========================================================================
+   4. COLUMN ORDER & FLEX
+   ========================================================================== */
+
+.fox-columns-reverse .blog56,
+.fox-columns-reverse .posts-grid {
+    flex-direction: row-reverse;
+}
+
+.fox-columns-reverse .blog56--list {
+    flex-direction: column;
+}
+
+/* Column alignment */
+.fox-col-start .blog56 { justify-content: flex-start; }
+.fox-col-center .blog56 { justify-content: center; }
+.fox-col-end .blog56 { justify-content: flex-end; }
+
+/* ==========================================================================
+   5. WIDGET SPECIFIC - LATEST POSTS
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced .blog56--widget {
+    direction: inherit;
+}
+
+/* List Layout RTL */
+.fox-widget-rtl-enhanced .blog56--list .post56 {
+    flex-direction: row-reverse;
+}
+
+.fox-widget-rtl-enhanced .blog56--list .thumbnail56 {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.fox-widget-rtl-enhanced .blog56--list.thumbnail-position-right .post56 {
+    flex-direction: row;
+}
+
+.fox-widget-rtl-enhanced .blog56--list.thumbnail-position-right .thumbnail56 {
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+/* Grid Layout RTL */
+.fox-widget-rtl-enhanced .blog56--grid {
+    direction: rtl;
+}
+
+.fox-widget-rtl-enhanced .blog56--grid .post56 {
+    text-align: right;
+}
+
+/* Meta RTL */
+.fox-widget-rtl-enhanced .meta56 {
+    direction: rtl;
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced .meta56 span {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.fox-widget-rtl-enhanced .meta56 span:last-child {
+    margin-left: 0;
+}
+
+.fox-widget-rtl-enhanced .meta56 i {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* ==========================================================================
+   6. WIDGET SPECIFIC - SOCIAL
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_social .social-icons {
+    direction: rtl;
+    justify-content: flex-start;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_social .social-icons li {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_social .social-icons li:last-child {
+    margin-left: 0;
+}
+
+/* ==========================================================================
+   7. WIDGET SPECIFIC - ABOUT
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_about {
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_about .about-avatar {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_about .about-content {
+    text-align: right;
+}
+
+/* ==========================================================================
+   8. WIDGET SPECIFIC - NEWSLETTER / MC4WP
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_mc4wp .mc4wp-form {
+    direction: rtl;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_mc4wp input[type="email"] {
+    text-align: right;
+    padding-right: 15px;
+    padding-left: 120px;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_mc4wp button,
+.fox-widget-rtl-enhanced.widget_fox_mc4wp input[type="submit"] {
+    right: auto;
+    left: 0;
+}
+
+/* ==========================================================================
+   9. WIDGET SPECIFIC - AUTHOR BOX
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_authorbox {
+    direction: rtl;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_authorbox .author-avatar {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_authorbox .author-info {
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_authorbox .author-social {
+    justify-content: flex-start;
+}
+
+/* ==========================================================================
+   10. WIDGET SPECIFIC - CATEGORIES / ARCHIVES
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_categories ul,
+.fox-widget-rtl-enhanced.widget_archive ul {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.fox-widget-rtl-enhanced.widget_categories li,
+.fox-widget-rtl-enhanced.widget_archive li {
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced.widget_categories li span.count,
+.fox-widget-rtl-enhanced.widget_archive li span {
+    float: left;
+}
+
+/* ==========================================================================
+   11. WIDGET SPECIFIC - TAG CLOUD
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_tag_cloud .tagcloud {
+    direction: rtl;
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced.widget_tag_cloud .tagcloud a {
+    float: right;
+    margin-right: 0;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   12. WIDGET SPECIFIC - IMAGE BOX
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_imagebox {
+    direction: rtl;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_imagebox .imagebox-content {
+    text-align: right;
+}
+
+/* ==========================================================================
+   13. WIDGET SPECIFIC - BUTTON
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_button {
+    text-align: right;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_button.fox-text-center {
+    text-align: center !important;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_button .btn i {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* ==========================================================================
+   14. WIDGET SPECIFIC - AD
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_ad {
+    direction: rtl;
+    text-align: center;
+}
+
+/* ==========================================================================
+   15. WIDGET SPECIFIC - INSTAGRAM
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_instagram .instagram-grid {
+    direction: rtl;
+}
+
+/* ==========================================================================
+   16. WIDGET SPECIFIC - FACEBOOK
+   ========================================================================== */
+
+.fox-widget-rtl-enhanced.widget_fox_facebook {
+    direction: ltr; /* Facebook widget needs LTR */
+}
+
+/* ==========================================================================
+   17. BORDER STYLES
+   ========================================================================== */
+
+/* Border Between Items - Horizontal */
+.fox-border-h-between .post56,
+.fox-border-h-between .widget-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.fox-border-h-between .post56:last-child,
+.fox-border-h-between .widget-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* Border Between Items - Vertical (LTR) */
+.fox-dir-ltr .fox-border-v-between .post56,
+.fox-dir-ltr .fox-border-v-between .widget-item {
+    border-right: 1px solid #e0e0e0;
+    padding-right: 15px;
+    margin-right: 15px;
+}
+
+.fox-dir-ltr .fox-border-v-between .post56:last-child,
+.fox-dir-ltr .fox-border-v-between .widget-item:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+/* Border Between Items - Vertical (RTL) */
+.fox-dir-rtl .fox-border-v-between .post56,
+.fox-dir-rtl .fox-border-v-between .widget-item {
+    border-left: 1px solid #e0e0e0;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+.fox-dir-rtl .fox-border-v-between .post56:last-child,
+.fox-dir-rtl .fox-border-v-between .widget-item:last-child {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* Widget Border Classes */
+.fox-border-top { border-top: 1px solid #e0e0e0 !important; }
+.fox-border-bottom { border-bottom: 1px solid #e0e0e0 !important; }
+.fox-border-left { border-left: 1px solid #e0e0e0 !important; }
+.fox-border-right { border-right: 1px solid #e0e0e0 !important; }
+.fox-border-all { border: 1px solid #e0e0e0 !important; }
+
+/* ==========================================================================
+   18. FOOTER WIDGETS RTL
+   ========================================================================== */
+
+.footer-widgets .fox-widget-rtl-enhanced {
+    direction: rtl;
+    text-align: right;
+}
+
+.footer-widgets .fox-widget-rtl-enhanced .widget-title {
+    text-align: right;
+}
+
+/* Footer columns RTL */
+body.rtl .footer-widgets .footer-widget-area {
+    float: right;
+}
+
+/* ==========================================================================
+   19. SIDEBAR WIDGETS RTL
+   ========================================================================== */
+
+.sidebar .fox-widget-rtl-enhanced {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ==========================================================================
+   20. HEADER WIDGETS RTL
+   ========================================================================== */
+
+.header-widgets .fox-widget-rtl-enhanced {
+    direction: rtl;
+}
+
+/* Header navigation RTL */
+.fox-widget-rtl-enhanced.widget_fox_header_nav .menu {
+    direction: rtl;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_header_nav .menu li {
+    float: right;
+}
+
+/* Header search RTL */
+.fox-widget-rtl-enhanced.widget_fox_header_search .search-form {
+    direction: rtl;
+}
+
+.fox-widget-rtl-enhanced.widget_fox_header_search input[type="search"] {
+    text-align: right;
+}
+
+/* ==========================================================================
+   21. RESPONSIVE RTL
+   ========================================================================== */
+
+@media screen and (max-width: 1024px) {
+    .fox-widget-rtl-enhanced .blog56--grid {
+        direction: rtl;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fox-widget-rtl-enhanced .blog56--list .post56 {
+        flex-direction: column;
+    }
+    
+    .fox-widget-rtl-enhanced .blog56--list .thumbnail56 {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .footer-widgets .fox-widget-rtl-enhanced {
+        text-align: right;
+    }
+}
+
+/* ==========================================================================
+   22. PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    .fox-widget-rtl-enhanced {
+        direction: rtl;
+        text-align: right;
+    }
+}

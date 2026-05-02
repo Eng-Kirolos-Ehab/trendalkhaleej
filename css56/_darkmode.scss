@@ -1,0 +1,285 @@
+/**
+ * DARK MODE
+ * todo57 - include this in a separated dark mode file
+ * ------------------------------------------------------------------------
+ * @since 4.7
+ */
+.darkmode-img-logo,
+.footer56__logo .darkmode-footer-logo {
+    display:none;
+}
+// fix dark mode in boxed layout
+body.darkmode.layout-boxed #wi-all {
+    background: var(--darkmode-bg);
+}
+.darkmode {
+    background: var(--darkmode-bg);
+    color: var(--darkmode-text-color);
+
+    .widget select {
+        color: var(--darkmode-text-color);
+    }
+
+    a:focus-visible {
+        outline-color: rgba(255,255,255,.5);
+    }
+    
+    // review text
+    .review-text {
+        background: rgba(255,255,255,.2);
+    }
+    .review-text-inner {
+        border-color: rgba(255,255,255,.2);
+    }
+
+    /* --------------------------       TEXT LIGHTER */
+    .footer56__copyright,
+    .mainnav ul.menu > li > a,
+    .mainnav ul.sub-menu a,
+    .single56__subtitle,
+    .titlebar56__description,
+    
+    .site-description,
+    
+    // author box
+    .authorbox56
+    
+    {
+        color: var(--darkmode-text-light-color);
+    }
+
+    // since 6.8.2
+    .fox56__css__icon__comment path {
+        fill: white !important;
+    }
+
+    /* --------------------------       TEXT LIGHT */
+    .text-logo {
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       BORDER */
+    .topbar56, .topbar56 .container,
+    .main_header56, .main_header56 .container,
+    .header_bottom56, .header_bottom56 .container,
+    
+    .titlebar56, .titlebar56 .container,
+    .toparea56 .container,
+    
+    .footer_sidebar56, .footer_sidebar56 .container,
+    .footer_bottom56, .footer_bottom56 .container,
+    
+    .secondary56 .widget + .widget,
+    
+    // menu
+    .mainnav ul.sub-menu,
+    .mainnav li.mega .sub-menu > li:before,
+
+    .nav--has-item-sep ul.menu > li + li > a:before,
+
+    // sticky header
+    .masthead--sticky .masthead__wrapper.before-sticky,
+    .header_mobile56,
+    
+    // sidebar sep
+    .secondary56 .secondary56__sep,
+    
+    // single sep
+    .single56--small-heading-normal .single56__heading,
+
+    // author box
+    .authorbox56,
+    
+    // offcanvas
+    .offcanvasnav56 li + li,
+    
+    // HEREO META
+    .hero56__content_meta,
+
+    // widget
+    .widget-title,
+    
+    // WooCommerce
+    .products.related > h2, .products.upsells > h2, .cross-sells > h2,
+    div.product .woocommerce-tabs ul.tabs:before,
+    
+    // builder
+    .widget56__row .col,
+    .widget56__row .col + .col,
+    .row56 .row56__col + .row56__col,
+
+    // builder heading
+    .section56 .heading56--border-top,
+    .section56 .heading56--border-bottom,
+
+    // compact titles
+    .widget56 .compact-titles .title56,
+
+    // author
+    .author56,
+    .authors56 .author56
+    {
+        border-color: var(--darkmode-border-color);
+    }
+
+    /* --------------------------       Dark mode background */
+    .authorbox56,
+    .masonry56--bigfirst .masonry-cell:first-child {
+        background-color: var(--darkmode-bg);
+    }
+
+    /* --------------------------       scroll up */
+    .scrollup56 {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       offcanvas */
+    .offcanvasnav56 a:hover {
+        background: rgba(0,0,0,.1);
+    }
+
+    /* --------------------------       side dock */
+    .sidedock56 {
+        background: var(--darkmode-bg);
+    }
+
+    /* --------------------------       menu item */
+    .mainnav ul.sub-menu a,
+    .mainnav ul.sub-menu a:hover,
+    .mainnav ul.sub-menu > li.current-menu-item > a, 
+    .mainnav ul.sub-menu > li.current-menu-ancestor > a {
+        background: none;
+    }
+    .mainnav ul.sub-menu a:hover {
+        background: rgba(0,0,0,.1);
+    }
+
+    // disable the indicator
+    .mainnav ul.menu > li.menu-item-has-children:after, 
+    .mainnav ul.menu > li.mega:after,
+    .mainnav ul.menu > li.menu-item-has-children:before, 
+    .mainnav ul.menu > li.mega:before {
+        display: none !important;
+    }
+
+    // top-level
+    .mainnav ul.menu > li > a:hover,
+    .mainnav ul.menu > li.current-menu-item > a,
+    .mainnav ul.menu > li.current-menu-ancestor > a,
+    
+    // dropdown
+    .mainnav ul.sub-menu a:hover {
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       drop down by default */
+    .mainnav ul.sub-menu {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       sticky header */
+    .masthead--sticky .masthead__wrapper.before-sticky {
+        background: var(--darkmode-bg);
+    }
+    .masthead--sticky .masthead__wrapper.before-sticky {
+        .mainnav ul.menu > li > a {
+            color: var(--darkmode-text-color);
+        }
+    }
+
+    /* --------------------------       modal search */
+    .search-wrapper-modal {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       mobile logo */
+    .header_mobile56 {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       custom logo */
+    .darkmode-img-logo,
+    .footer56__logo .darkmode-footer-logo {
+        display: block;
+    }
+    .darkmode-img-logo + .main-img-logo,
+    .footer56__logo .darkmode-footer-logo + .main-footer-logo {
+        display: none;
+    }
+
+    /* --------------------------       footer sidebar */
+    .footer_sidebar56 {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       footer bottom */
+    .footer_bottom56 {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       off canvas */
+    .offcanvas56 {
+        background: var(--darkmode-bg);
+        color: var(--darkmode-text-color);
+    }
+
+    /* --------------------------       terms */
+    .terms56 a {
+        color: var(--darkmode-text-light-color);
+        background: rgba(255,255,255,.2);
+        &:hover {
+            color: var(--darkmode-text-color);
+        }
+    }
+
+    /* --------------------------       lines softer */
+    .post56__sep__line,
+    .blog56__sep__line {
+        border-color: rgba(255,255,255,.25) !important;
+    }
+
+    /* --------------------------       caption */
+    .wp-caption-text, .single_thumbnail56 figcaption, .thumbnail56 figcaption, .wp-block-image figcaption, .blocks-gallery-caption, .wp-element-caption {
+        color: var(--darkmode-text-light-color);
+
+        a {
+            color: var(--darkmode-text-color);
+        }
+    }
+
+    .authorbox56__description {
+        color: var(--darkmode-text-light-color);
+    }
+
+    /* --------------------------       post meta + excerpt */
+    .excerpt56 {
+        color: var(--darkmode-text-light-color);
+    }
+    .meta56 {
+        color: var(--darkmode-text-lighter-color);
+        a,
+        .meta56__category--fancy a {
+            color: var(--darkmode-text-color);
+        }
+    }
+
+}
+
+.darkmode.woocommerce div.product form.cart div.quantity,
+html .darkmode .woocommerce div.quantity, 
+html .darkmode.woocommerce-page div.quantity {
+    background: white;
+}
+html .darkmode .woocommerce table.shop_table {
+    border-color: var(--darkmode-border-color);
+    th,
+    td {
+        border-color: var(--darkmode-border-color);
+    }
+}

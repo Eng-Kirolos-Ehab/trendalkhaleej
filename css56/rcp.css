@@ -1,0 +1,53 @@
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+#rcp_subscription_levels {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2em;
+}
+#rcp_subscription_levels li {
+  margin: 0;
+  padding: 0;
+}
+
+.rcp-table-wrapper h3 {
+  font-size: 1.1em;
+}
+.rcp-table-wrapper table th {
+  text-align: left;
+  vertical-align: text-top;
+}
+.rcp-table-wrapper table button {
+  white-space: nowrap;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+@media only screen and (max-width: 600px) {
+  .rcp-table-wrapper table {
+    overflow-x: scroll;
+    display: block;
+  }
+}
+
+#rcp_payment_gateways label + label {
+  margin-left: 1em;
+}
+
+.rcp_sub_details_renew {
+  text-decoration: none !important;
+}
+/* rcp msg */
+.rcp__msg {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 3em;
+}
+.rcp__msg .button56 {
+  display: inline-block;
+}
+.rcp__msg .button56 a {
+  text-decoration: none !important;
+}/*# sourceMappingURL=rcp.css.map */
