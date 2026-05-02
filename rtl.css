@@ -883,3 +883,208 @@ input[type="button"] {
         text-align: right;
     }
 }
+
+/* ==========================================================================
+   24. META56 COMPONENT RTL FIXES
+   ========================================================================== */
+
+/* Avatar image margin - swap right to left */
+.meta56__author__avatar img {
+    margin-right: 0;
+    margin-left: 6px;
+}
+
+/* Author "by" text margin swap */
+.meta56__author__by {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* Comment icon margin swap */
+.meta56__comment .fox56__css__icon__comment {
+    margin-right: 0;
+    margin-left: 4px;
+}
+
+/* ==========================================================================
+   25. SHARE56 COMPONENT RTL FIXES
+   ========================================================================== */
+
+/* Label gap before buttons list - swap left to right */
+.share56__label + ul {
+    margin-left: 0;
+    margin-right: 16px;
+}
+
+/* Gap between inline share buttons */
+.share56--inline li + li {
+    margin-left: 0;
+    margin-right: 3px;
+}
+
+/* Mobile share label margin */
+@media only screen and (max-width: 600px) {
+    .meta-share .share56 .share56__label {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+    .meta-share .share56 > ul > li {
+        margin-right: 0;
+    }
+}
+
+/* ==========================================================================
+   26. PAGINATION56 RTL FIXES
+   ========================================================================== */
+
+/* Force RTL direction on pagination block */
+.pagination56 {
+    direction: rtl;
+}
+
+/* Swap margin between page numbers */
+.pagination56 .page-numbers + .page-numbers {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+/* Flip prev/next arrows */
+.pagination56 .page-numbers.prev,
+.pagination56 .page-numbers.next {
+    transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+   27. COMMENT TREE VERTICAL BORDERS RTL FIXES
+   ========================================================================== */
+
+/* Move vertical thread line from left to right */
+.comment-body:before {
+    left: auto;
+    right: calc(var(--comment-avatar-width) / 2);
+    border-left: none;
+    border-right: 1px solid var(--border-color);
+}
+
+/* Swap children indentation to right side */
+.commentlist .children {
+    padding-left: 0;
+    padding-right: var(--comment-avatar-width);
+}
+
+/* Move children vertical connector line */
+.commentlist .children:before {
+    left: auto;
+    right: calc(var(--comment-avatar-width) / 2);
+    border-left: none;
+    border-right: 1px solid var(--border-color);
+}
+
+/* Move children horizontal connector line */
+.commentlist .children:after {
+    left: auto;
+    right: calc(var(--comment-avatar-width) / 2);
+}
+
+/* ==========================================================================
+   28. SIDEBAR SEPARATOR RTL FIXES
+   ========================================================================== */
+
+/* Swap sidebar separator border to right side */
+.secondary56__sep {
+    border-left: none;
+}
+
+/* Right sidebar: separator was at left edge, now at right edge in RTL */
+.hassidebar--right .secondary56__sep {
+    left: auto;
+    right: calc(-1 * var(--sidebar-content-spacing) / 2);
+    border-right-width: inherit;
+}
+
+@media only screen and (max-width: 1024px) {
+    .hassidebar--right .secondary56__sep {
+        left: auto;
+        right: -5px;
+    }
+}
+
+/* Left sidebar: separator was at right edge, now at left edge in RTL */
+.hassidebar--left .secondary56__sep {
+    right: auto;
+    left: calc(-1 * var(--sidebar-content-spacing) / 2);
+}
+
+@media only screen and (max-width: 1024px) {
+    .hassidebar--left .secondary56__sep {
+        right: auto;
+        left: -5px;
+    }
+}
+
+/* ==========================================================================
+   29. SINGLE56 HEADING SEPARATOR RTL FIX
+   ========================================================================== */
+
+/* Flip vertical separator between heading text and link */
+.single56__heading span + a:before {
+    border-left: none;
+    border-right: 1px solid;
+}
+
+/* ==========================================================================
+   30. FOOTER56 RTL FIXES
+   ========================================================================== */
+
+/* Swap left/right column alignment in footer */
+.footer__col--left .widget {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+}
+
+.footer__col--right .widget {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Footer bottom columns swap */
+.footer_bottom__col--left {
+    text-align: right;
+    justify-content: flex-end;
+}
+.footer_bottom__col--left .footer56__element {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.footer_bottom__col--left .footer56__element:last-child {
+    margin-left: 0;
+}
+
+.footer_bottom__col--right {
+    text-align: left;
+    justify-content: flex-start;
+}
+.footer_bottom__col--right .footer56__element + .footer56__element {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer_bottom__col--right .footer56__element + .footer56__element {
+        margin-right: 0;
+    }
+    .footer_bottom__col--right {
+        justify-content: flex-end;
+    }
+    .footer_bottom__col--left {
+        justify-content: flex-start;
+    }
+}
+
+/* Footer nav list items gap */
+.footer56__nav li + li {
+    margin-left: 0;
+    margin-right: 10px;
+}
