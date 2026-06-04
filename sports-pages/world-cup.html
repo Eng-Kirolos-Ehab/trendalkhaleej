@@ -1,0 +1,821 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كأس العالم 2026 - نتائج ومباريات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+  * { font-family: 'Cairo', sans-serif; }
+  :root { --green:#003785; --green-dark:#001a5c; --gold:#C8A84B; --dark:#0a0d18; --card:#141829; --border:#1e2540; }
+  body { background: var(--dark); color: #e8eaf0; }
+  .site-header { background: #fff; border-bottom: 1px solid #e5e7eb; box-shadow: 0 2px 18px rgba(0,0,0,.1); }
+  .tab-btn { transition: all .2s; border-bottom: 3px solid transparent; }
+  .tab-btn.active { border-bottom-color: var(--gold); color: var(--gold); }
+  .tab-btn:hover:not(.active) { border-bottom-color: #9ca3af; }
+  .ticker-wrap { overflow: hidden; background: #e5e7eb; }
+  .ticker-content { display: inline-flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+  .ticker-content:hover { animation-play-state: paused; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .match-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; transition: transform .2s, box-shadow .2s; }
+  .match-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,55,133,.3); }
+  .badge-live { background: #ef4444; animation: pulse-red 1.5s infinite; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 700; }
+  @keyframes pulse-red { 0%,100%{opacity:1}50%{opacity:.6} }
+  .standings-table th { background: var(--green-dark); color: var(--gold); font-size: 13px; }
+  .standings-table tr:hover td { background: rgba(0,55,133,.15); }
+  .standings-table td { border-bottom: 1px solid var(--border); }
+  .modal-overlay { background: rgba(0,0,0,.85); backdrop-filter: blur(4px); }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--dark); } ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
+  .skeleton { background: linear-gradient(90deg,#141829 25%,#1e2540 50%,#141829 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+  .group-badge { background: rgba(200,168,75,.15); border: 1px solid rgba(156,163,175,.3); color: var(--gold); font-size: 11px; font-weight: 900; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+
+  /* ── GROUP CARDS ── */
+  .grp-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; }
+  .grp-hdr  { background:linear-gradient(90deg,rgba(200,168,75,.1) 0%,#fafafa 100%); padding:10px 14px; display:flex; align-items:center; gap:10px; border-bottom:1px solid #f1f5f9; }
+  .grp-letter { font-size:17px; font-weight:900; color:#9c7726; }
+  .grp-lbl  { font-size:10px; color:#9ca3af; margin-right:auto; }
+  .grp-row  { display:flex; align-items:center; gap:8px; padding:8px 14px; border-bottom:1px solid #f8f9fa; font-size:12px; }
+  .grp-row:last-child { border-bottom:none; }
+  .grp-rank { width:16px; font-weight:900; font-size:11px; text-align:center; }
+  .grp-rank.q { color:#9c7726; font-weight:900; }
+  .grp-rank.out { color:#9ca3af; }
+  .grp-name { flex:1; font-weight:600; color:#111827; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .grp-pts  { font-size:13px; font-weight:900; color:#9c7726; min-width:20px; text-align:center; }
+  .grp-played { font-size:11px; color:#9ca3af; min-width:16px; text-align:center; }
+
+  /* ── BRACKET ── */
+  .brk-outer { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; direction:ltr; background:linear-gradient(160deg,#f8fafc 0%,#f1f5f9 100%); border-radius:14px; padding:10px 6px; border:1px solid #e2e8f0; }
+  .brk-main  { display:flex; align-items:stretch; width:100%; min-height:640px; direction:ltr; }
+  .brk-col   { display:flex; flex-direction:column; flex:1; min-width:0; }
+  /* Mobile bracket navigation */
+  .brk-scroll-hint { display:none; align-items:center; justify-content:center; gap:5px; padding:5px 0 0; font-size:11px; color:#94a3b8; font-weight:600; }
+  .brk-nav-btns { display:none; justify-content:center; align-items:center; gap:16px; padding:10px 0 4px; }
+  .brk-nav-btn { width:44px;height:44px;border-radius:50%;background:#f1f5f9;border:1px solid #d1d5db;font-size:22px;line-height:1;cursor:pointer;color:#374151;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .brk-nav-label { font-size:12px;font-weight:700;color:#6b7280;min-width:80px;text-align:center; }
+  @media(max-width:768px){
+    .brk-outer { padding:8px 4px; border-radius:10px; }
+    .brk-main  { width:auto; min-width:900px; min-height:420px; }
+    .brk-col   { min-width:86px; }
+    .brk-final { min-width:170px; }
+    .brk-sw    { min-height:36px; }
+    .brk-tr    { padding:4px 5px; font-size:10px; }
+    .brk-scroll-hint { display:flex; }
+    .brk-nav-btns { display:flex; }
+    .page-tab-nav nav { justify-content:flex-start; max-width:none; }
+  }
+  .brk-ctitle{ text-align:center; font-size:10px; font-weight:800; color:#7c6616; padding:0 2px 10px; letter-spacing:.4px; white-space:nowrap; }
+  .brk-slots { display:flex; flex-direction:column; flex:1; }
+  .brk-sw    { flex:1; display:flex; align-items:center; padding:3px 0; min-height:0; }
+  a.brk-card,.brk-card { display:block; width:100%; background:#fff; border:1px solid #e2e8f0; border-radius:9px; overflow:hidden; text-decoration:none; transition:all .15s; box-shadow:0 1px 4px rgba(0,0,0,.07); }
+  a.brk-card:hover { border-color:#94a3b8; box-shadow:0 1px 4px rgba(0,0,0,.1); }
+  .brk-tr    { display:flex; align-items:center; gap:5px; padding:5px 7px; border-bottom:1px solid #f3f4f6; font-size:11px; }
+  .brk-tr:last-child { border-bottom:none; }
+  .brk-tr.win{ background:rgba(200,168,75,.08); border-left:3px solid #d1d5db; }
+  .flag-c    { width:22px; height:22px; border-radius:50%; overflow:hidden; background:#f1f5f9; border:1px solid #e2e8f0; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:10px; color:#9ca3af; }
+  .flag-c img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .brk-tn   { flex:1; font-weight:600; color:#111827; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .brk-tn.tbd{ color:#cbd5e1; font-style:normal; font-weight:500; }
+  .brk-sc   { font-weight:900; color:#9c7726; min-width:14px; text-align:right; }
+  /* Connectors - Left side: vertical on LEFT border, horizontal bottom */
+  .cn-l  { display:flex; flex-direction:column; width:20px; flex-shrink:0; }
+  .cn-l .cntitle { padding:6px 0 8px; color:transparent; font-size:10px; }
+  .cn-l .cnbody  { display:flex; flex-direction:column; flex:1; }
+  .cn-l .cnpair  { display:flex; flex-direction:column; flex:1; }
+  .cn-l .cnt { flex:1; border-left:1px solid #d1d5db; border-bottom:1px solid #d1d5db; border-radius:0 0 0 4px; }
+  .cn-l .cnb { flex:1; border-left:1px solid #d1d5db; }
+  /* Connectors - Right side: vertical on RIGHT border, horizontal bottom */
+  .cn-r  { display:flex; flex-direction:column; width:20px; flex-shrink:0; }
+  .cn-r .cntitle { padding:6px 0 8px; color:transparent; font-size:10px; }
+  .cn-r .cnbody  { display:flex; flex-direction:column; flex:1; }
+  .cn-r .cnpair  { display:flex; flex-direction:column; flex:1; }
+  .cn-r .cnt { flex:1; border-right:1px solid #d1d5db; border-bottom:1px solid #d1d5db; border-radius:0 4px 0 0; }
+  .cn-r .cnb { flex:1; border-right:1px solid #d1d5db; }
+  /* Final card - LANDSCAPE (width > height) */
+  .brk-final       { display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; min-width:260px; max-width:300px; padding:0 6px; }
+  .brk-final-body { display:flex; align-items:center; gap:10px; width:100%; background:linear-gradient(135deg,#fffbeb,#fef9ec,#fffde7); border:1px solid #e2e8f0; border-radius:14px; padding:14px 12px; box-shadow:0 4px 16px rgba(200,168,75,.15); }
+  .brk-finalist    { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; min-width:0; }
+  .flag-c-lg { width:46px; height:46px; border-radius:50%; overflow:hidden; border:2px solid #d1d5db; background:#fffde7; display:flex; align-items:center; justify-content:center; font-size:16px; color:#9c7726; flex-shrink:0; box-shadow:0 2px 8px rgba(200,168,75,.3); }
+  .flag-c-lg img   { width:100%; height:100%; object-fit:cover; display:block; }
+  .fin-name       { font-size:10px; font-weight:800; color:#374151; text-align:center; line-height:1.3; }
+  .fin-name.tbd   { color:#94a3b8; }
+  .brk-cup         { display:flex; flex-direction:column; align-items:center; gap:3px; flex-shrink:0; }
+  .brk-cup img     { width:52px; filter:drop-shadow(0 4px 10px rgba(200,168,75,.5)); }
+  .brk-cup-date    { font-size:8px; color:rgba(200,168,75,.8); font-weight:800; white-space:nowrap; }
+
+/* ── WHITE HEADER OVERRIDES ── */
+.site-header h1 { color: #111 !important; }
+.site-header a.back-link-hdr, .site-header a[href*="sports-hub"] { color: #555 !important; font-weight: 700; }
+.site-header a[href*="sports-hub"]:hover { color: #111 !important; }
+.site-header .tab-btn { color: #4b5563 !important; font-weight: 700; background: transparent; border: none; font-family: 'Cairo', sans-serif; cursor: pointer; }
+.site-header .tab-btn:hover { color: #111 !important; }
+.site-header .tab-btn.active { color: #111 !important; border-bottom-color: var(--gold) !important; font-weight: 900 !important; }
+.site-header [id$="-time"],[id="current-time"],[id="hdr-time"] { color: #111 !important; }
+.site-header [class*="text-green-200"],[class*="text-green"] { color: var(--gold) !important; }
+.site-header [class*="text-white"]:not(.badge-live) { color: #111 !important; }
+.site-header [class*="text-gray-300"] { color: #6b7280 !important; }
+
+/* ════════ MINIMAL B/W THEME — unified override (2026-05-25) ════════ */
+:root{
+  --gold:#d4af5f; --gold-d:#b8923d; --gold-subtle:rgba(212,175,95,.10);
+  --green:#22c55e; --red:#ef4444;
+  --dark:#0a0a0a; --bg2:#111113; --card:#161618; --card2:#1d1d20;
+  --border:#262629; --border2:#1f1f22;
+  --text:#fafafa; --text2:#b0b0b6; --muted:#76767c;
+  --radius:16px; --shadow:0 1px 2px rgba(0,0,0,.5),0 12px 32px -10px rgba(0,0,0,.55); --shadow-sm:0 1px 3px rgba(0,0,0,.4);
+}
+html.light-theme{
+  --gold:#9c7726; --gold-d:#7e6020; --gold-subtle:rgba(156,119,38,.08);
+  --green:#16a34a; --red:#dc2626;
+  --dark:#f4f4f5; --bg2:#ffffff; --card:#ffffff; --card2:#f6f6f7;
+  --border:#e7e7ea; --border2:#efeff1;
+  --text:#131316; --text2:#54545e; --muted:#8c8c94;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -12px rgba(0,0,0,.14); --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+}
+body, html.light-theme body{ background:var(--dark)!important; color:var(--text)!important; -webkit-font-smoothing:antialiased; }
+
+/* Header — adaptive (dark in dark theme, white in light) */
+.site-header{ background:var(--bg2)!important; border-bottom:1px solid var(--border)!important; box-shadow:var(--shadow-sm)!important; }
+.site-header h1, .site-header [id$="-time"], .site-header [id="current-time"]{ color:var(--text)!important; }
+.site-header [class*="text-green-200"], .site-header [class*="text-green"], .site-header #current-date{ color:var(--gold)!important; }
+.site-header [class*="text-white"]:not(.badge-live){ color:var(--text)!important; }
+.site-header [class*="text-white/70"], .site-header a[href*="sports-hub"], .site-header [class*="text-gray-300"]{ color:var(--text2)!important; }
+.site-header a[href*="sports-hub"]:hover{ color:var(--text)!important; }
+.site-header .tab-btn{ color:var(--text2)!important; }
+.site-header .tab-btn:hover{ color:var(--text)!important; }
+.site-header .tab-btn.active{ color:var(--text)!important; border-bottom-color:var(--gold)!important; }
+#theme-toggle{ background:var(--card2)!important; border:1px solid var(--border)!important; }
+[class*="bg-[#f3f4f6]"]{ background:rgba(255,255,255,.96)!important; }
+html.light-theme [class*="bg-[#f3f4f6]"]{ background:transparent!important; }
+[class*="bg-[#fff0f0]"]{ background:rgba(239,68,68,.12)!important; border-color:rgba(239,68,68,.3)!important; }
+
+/* Cards */
+.match-card{ background:var(--card)!important; border:1px solid var(--border)!important; border-radius:var(--radius)!important; }
+.match-card:hover{ transform:translateY(-2px); box-shadow:var(--shadow)!important; border-color:var(--gold)!important; }
+
+/* Standings */
+.standings-table th{ background:var(--card2)!important; color:var(--muted)!important; }
+.standings-table td{ border-bottom:1px solid var(--border2)!important; color:var(--text)!important; }
+.standings-table tr:hover td{ background:var(--card2)!important; }
+.zone-ucl{ border-right:3px solid #3b82f6!important; }
+.zone-rel{ border-right:3px solid var(--red)!important; }
+
+.skeleton{ background:linear-gradient(90deg,var(--card) 25%,var(--card2) 50%,var(--card) 75%)!important; background-size:200% 100%!important; }
+::-webkit-scrollbar-thumb{ background:var(--border); }
+::-webkit-scrollbar-thumb:hover{ background:var(--gold); }
+::-webkit-scrollbar-track{ background:transparent; }
+.section-title{ color:var(--text)!important; }
+footer{ background:var(--bg2)!important; border-top:1px solid var(--border)!important; }
+
+/* Tailwind utility → variable mapping (both themes) */
+[class*="bg-[#1a1f2e]"], [class*="bg-[#141829]"], [class*="bg-[#1a1a1c]"]{ background:var(--card)!important; }
+[class*="bg-[#0f1117]"], [class*="bg-[#0a0d18]"], [class*="bg-[#0d1018]"], [class*="bg-[#0f1419]"]{ background:var(--bg2)!important; }
+[class*="border-[#2a2f3e]"], [class*="border-[#1e2540]"], [class*="border-gray-700"]{ border-color:var(--border)!important; }
+[class*="divide-[#2a2f3e]"]>*, [class*="divide-[#1e2540]"]>*{ border-color:var(--border)!important; }
+[class*="text-white"]{ color:var(--text)!important; }
+[class*="text-gray-300"], [class*="text-gray-400"], [class*="text-gray-500"]{ color:var(--text2)!important; }
+[class*="text-gray-600"], [class*="text-gray-700"]{ color:var(--muted)!important; }
+[class*="text-green-400"], [class*="text-green-300"], [class*="text-green-200"], [class*="text-yellow-400"], [class*="text-yellow-300"]{ color:var(--gold)!important; }
+[class*="text-blue-400"]{ color:var(--text2)!important; }
+[class*="text-red-400"]{ color:var(--red)!important; }
+[class*="hover:bg-white/5"]:hover, [class*="hover:bg-gray-700"]:hover{ background:var(--card2)!important; }
+.badge-live{ color:#fff!important; }
+[class*="ch-"]{ color:#fff!important; }
+
+/* Ticker — always-dark accent strip */
+.ticker-wrap{ background:#000!important; border-bottom:1px solid var(--border)!important; }
+.ticker-wrap [class*="text-gray"]{ color:#8a8a8a!important; }
+.ticker-wrap [class*="text-white"]{ color:#fff!important; }
+.ticker-wrap [class*="text-yellow"], .ticker-wrap [class*="text-green"], .ticker-wrap [class*="text-blue"]{ color:var(--gold)!important; }
+.ticker-wrap [class*="text-red"]{ color:#f87171!important; }
+
+/* ── back button + supplementary overrides (2026-05-25b) ── */
+.back-btn{ display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:10px; background:var(--card2); border:1px solid var(--border); color:var(--text2); font-size:13px; font-weight:800; text-decoration:none; transition:color .15s, border-color .15s, background .15s; }
+.back-btn:hover{ color:var(--text); border-color:#94a3b8; background:var(--gold-subtle); }
+.back-btn svg{ width:15px; height:15px; flex-shrink:0; }
+.icon-btn{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; background:var(--card2); border:1px solid var(--border); color:var(--text); font-size:16px; cursor:pointer; transition:border-color .15s, background .15s; }
+.icon-btn:hover{ border-color:#94a3b8; background:var(--gold-subtle); }
+.site-header [class*="-200"]{ color:var(--gold)!important; }
+[class*="border-[#f0e8d0]"], .site-header nav{ border-top-color:var(--border)!important; border-color:var(--border)!important; }
+
+
+/* ═══ Unified Masthead ═══ */
+.masthead{position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.main-hdr{background:var(--bg2,#111113);border-bottom:1px solid var(--border,#262629);}
+.main-hdr-inner{max-width:1280px;margin:0 auto;padding:12px 16px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;}
+.main-hdr-date{line-height:1.5;}
+.hdr-day-label{font-size:10px;font-weight:600;color:var(--muted,#76767c);display:block;text-transform:uppercase;letter-spacing:.4px;}
+.hdr-date-val{font-size:13px;font-weight:800;color:var(--text,#fafafa);display:block;}
+.main-hdr-logo{display:flex;justify-content:center;}
+.hdr-logo-link{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.hdr-logo-badge{width:44px;height:44px;border-radius:12px;background:var(--gold,#d4af5f);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#0a0a0a;flex-shrink:0;}
+.hdr-logo-name{font-size:19px;font-weight:900;color:var(--text,#fafafa);letter-spacing:-.3px;white-space:nowrap;}
+.main-hdr-right{display:flex;justify-content:flex-end;align-items:center;gap:8px;}
+.hdr-live-pill{display:none;align-items:center;gap:5px;background:#e5e7eb;border:1px solid #d1d5db;border-radius:20px;padding:3px 10px;}
+.hdr-live-pill.show{display:flex;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ef4444;flex-shrink:0;animation:livePulse 1.2s ease-in-out infinite;}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hdr-live-txt{font-size:10px;font-weight:800;color:#111;}
+.hdr-live-num{font-size:11px;font-weight:700;color:#374151;}
+.hdr-nav{background:var(--bg2,#111113);border-bottom:1px solid var(--border,#262629);}
+.hdr-nav-inner{max-width:1280px;margin:0 auto;}
+.ssn-list{display:flex;align-items:stretch;list-style:none;margin:0;padding:0 4px;overflow-x:auto;scrollbar-width:none;justify-content:center;}
+.ssn-list::-webkit-scrollbar{display:none;}
+.ssn-item{position:relative;flex-shrink:0;display:flex;align-items:stretch;}
+.ssn-link,.ssn-btn{display:flex;align-items:center;gap:4px;padding:11px 13px;font-size:13px;font-weight:700;color:var(--text2,#b0b0b6);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;text-decoration:none;font-family:'Cairo',sans-serif;transition:color .15s,border-color .15s;}
+.ssn-link:hover,.ssn-btn:hover{color:var(--gold,#d4af5f);border-bottom-color:var(--gold,#d4af5f);}
+.ssn-link.ssn-active{color:var(--gold,#d4af5f);border-bottom-color:var(--gold,#d4af5f);font-weight:800;}
+.ssn-chev{font-size:9px;opacity:.5;transition:transform .2s;}
+.ssn-item.ssn-open .ssn-chev{transform:rotate(180deg);}
+.ssn-drop,.ssn-mega{display:none;position:fixed;background:var(--bg2,#111113);border:1px solid var(--border,#262629);border-radius:12px;z-index:9999;box-shadow:0 16px 48px rgba(0,0,0,.7);padding:8px;}
+.ssn-item.ssn-open .ssn-drop,.ssn-item.ssn-open .ssn-mega{display:block;}
+.ssn-mega{width:540px;max-width:calc(100vw - 24px);padding:14px;}
+.ssn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ssn-col-hdr{font-size:11px;font-weight:800;color:var(--gold,#d4af5f);padding:0 4px 7px;border-bottom:1px solid var(--border,#262629);margin-bottom:5px;letter-spacing:.3px;}
+.ssn-a{display:block;padding:6px 8px;font-size:12.5px;font-weight:600;color:var(--text,#fafafa);text-decoration:none;border-radius:8px;transition:background .12s,color .12s;white-space:nowrap;}
+.ssn-a:hover{background:rgba(255,255,255,.06);color:var(--gold,#d4af5f);}
+.ssn-a.locked{color:var(--muted,#76767c);pointer-events:none;font-weight:500;}
+.ssn-a.ssn-cur{color:var(--gold,#d4af5f);font-weight:800;}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9998;}
+.mob-overlay.open{display:block;}
+.mob-drawer{position:fixed;top:0;right:0;width:280px;height:100vh;background:var(--bg2,#111113);border-left:1px solid var(--border,#262629);z-index:9999;overflow-y:auto;padding-top:56px;transform:translateX(110%);transition:transform .28s ease;box-shadow:-8px 0 32px rgba(0,0,0,.5);}
+.mob-drawer.open{transform:translateX(0);}
+.mob-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--text2,#b0b0b6);font-size:22px;padding:4px;line-height:1;transition:color .15s;}
+.mob-close:hover{color:var(--gold,#d4af5f);}
+.mob-nav-link{display:block;padding:13px 20px;font-size:14px;font-weight:700;color:var(--text,#fafafa);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s,background .15s;}
+.mob-nav-link:hover,.mob-nav-link.cur{color:var(--gold,#d4af5f);background:rgba(255,255,255,.04);}
+.mob-section-hdr{padding:8px 20px 5px;font-size:10px;font-weight:800;color:var(--gold,#d4af5f);letter-spacing:.5px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);margin-top:4px;}
+.mob-nav-sub{padding-right:32px;font-size:13px;font-weight:600;color:var(--text2,#b0b0b6);}
+.page-tab-nav{background:var(--bg2,#111113);overflow-x:auto;scrollbar-width:none;}
+.page-tab-nav::-webkit-scrollbar{display:none;}
+.page-tab-nav nav{display:flex;justify-content:center;max-width:1280px;margin:0 auto;padding:0 8px;border-top:1px solid rgba(255,255,255,.06);}
+.tab-btn{padding:10px 16px;font-size:13px;font-weight:700;color:var(--text2,#b0b0b6)!important;background:none!important;border:none!important;border-bottom:2.5px solid transparent!important;cursor:pointer;white-space:nowrap;font-family:'Cairo',sans-serif;transition:color .15s,border-color .15s;}
+.tab-btn:hover{color:var(--text,#fafafa)!important;border-bottom-color:rgba(212,175,95,.4)!important;}
+.tab-btn.active{color:var(--gold,#d4af5f)!important;border-bottom-color:var(--gold,#d4af5f)!important;font-weight:800!important;}
+.icon-btn{background:var(--card2,#1d1d20)!important;border:1px solid var(--border,#262629)!important;border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--text,#fafafa);transition:border-color .15s,background .15s;}
+.icon-btn:hover{border-color:#94a3b8!important;}
+@media(max-width:768px){#mob-menu-btn{display:flex!important;}}
+@media(max-width:640px){
+  .main-hdr-date{display:none;}
+  .hdr-logo-name{font-size:16px;}
+  .hdr-logo-badge{width:38px;height:38px;font-size:18px;}
+  /* Center logo, push controls to left */
+  .main-hdr-inner{display:flex;align-items:center;position:relative;padding:10px 14px;gap:0;}
+  .main-hdr-logo{position:absolute;left:50%;transform:translateX(-50%);}
+  .main-hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
+  .topbar-inner{padding:3px 12px;}
+  .main-hdr-inner{padding:7px 12px;}
+  .ssn-link,.ssn-btn{padding:8px 9px;font-size:12px;}
+}
+</style>
+</head>
+<body>
+<script>
+  const CONFIG = {
+    PROXY:      '/koora-api.php',
+    LEAGUE_ID:  1,
+    SEASON:     2026,
+    S_FROM:     '2026-06-11',
+    S_TO:       '2026-07-19',
+    REFRESH_LIVE: 60000,
+  };
+  const BROADCAST_DATA = {};
+  const DEFAULT_CHANNELS = [
+    { name: 'beIN Sports 1', type: 'other' },
+    { name: 'beIN Sports 2', type: 'other' },
+    { name: 'SSC Sport 1', type: 'ssc' },
+    { name: 'MBC Sport', type: 'mbc' },
+  ];
+</script>
+
+
+
+<div class="mob-overlay" id="mob-overlay"></div>
+<header class="masthead">
+  <!-- Row 1: Main header -->
+  <div class="main-hdr">
+    <div class="main-hdr-inner">
+      <div class="main-hdr-date"><span class="hdr-day-label">اليوم</span><strong class="hdr-date-val" id="hdr-date-val"></strong></div>
+      <div class="main-hdr-logo"><a href="https://trendalkhaleej.com" class="hdr-logo-link"><div class="hdr-logo-badge">ت</div><div class="hdr-logo-name">ترند الخليج</div></a></div>
+      <div class="main-hdr-right">
+        <div id="live-count" class="hdr-live-pill"><span class="live-dot"></span><span class="hdr-live-txt">LIVE</span><span class="hdr-live-num">0</span></div>
+        <button id="theme-toggle" onclick="toggleTheme()" title="تبديل الثيم" class="icon-btn">🌙</button>
+        <button class="icon-btn" id="mob-menu-btn" style="display:none" aria-label="القائمة"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <!-- Row 2: Sports subnav -->
+  <div class="hdr-nav"><div class="hdr-nav-inner">
+    <ul class="ssn-list">
+      <li class="ssn-item"><a href="sports-home.html" class="ssn-link" title="الرئيسية" style="padding:11px 10px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 13 15 13 15 21"/></svg></a></li>
+      <li class="ssn-item"><a href="sports-hub.html" class="ssn-link">مباريات اليوم</a></li>
+      <li class="ssn-item"><a href="world-cup.html" class="ssn-link ssn-active">كأس العالم 2026</a></li>
+      <li class="ssn-item" id="ssn-batal">
+        <button class="ssn-btn" data-drop="ssn-mega-batal">مسابقات <span class="ssn-chev">▾</span></button>
+        <div class="ssn-mega" id="ssn-mega-batal"><div class="ssn-grid">
+          <div><div class="ssn-col-hdr">مسابقات عالمية</div>
+            <a href="champions-league.html" class="ssn-a">دوري أبطال أوروبا</a>
+            <a href="world-cup.html" class="ssn-a">كأس العالم 2026</a>
+            <a href="king-cup.html" class="ssn-a">كأس الملك السعودي</a>
+            <a class="ssn-a locked">دوري أبطال آسيا</a>
+            <a class="ssn-a locked">الدوري الأوروبي</a>
+          </div>
+          <div><div class="ssn-col-hdr">الدول الأوروبية</div>
+            <a href="laliga.html" class="ssn-a">الدوري الإسباني</a>
+            <a href="english-league.html" class="ssn-a">الدوري الإنجليزي</a>
+            <a class="ssn-a locked">الدوري الإيطالي</a>
+            <a class="ssn-a locked">الدوري الألماني</a>
+            <a class="ssn-a locked">الدوري الفرنسي</a>
+          </div>
+          <div><div class="ssn-col-hdr">الدول العربية</div>
+            <a href="saudi-league.html" class="ssn-a">دوري روشن السعودي</a>
+            <a href="egypt-league.html" class="ssn-a">الدوري المصري الممتاز</a>
+            <a class="ssn-a locked">الدوري المغربي</a>
+            <a class="ssn-a locked">دوري نجوم قطر</a>
+            <a class="ssn-a locked">دوري الخليج العربي</a>
+          </div>
+        </div></div>
+      </li>
+      <li class="ssn-item" id="ssn-frq">
+        <button class="ssn-btn" data-drop="ssn-mega-frq">فرق <span class="ssn-chev">▾</span></button>
+        <div class="ssn-mega" id="ssn-mega-frq"><div class="ssn-grid">
+          <div><div class="ssn-col-hdr">إسبانيا</div>
+            <a href="club-profile.html?team=541&league=140" class="ssn-a">ريال مدريد</a>
+            <a href="club-profile.html?team=529&league=140" class="ssn-a">برشلونة</a>
+            <a href="club-profile.html?team=530&league=140" class="ssn-a">أتلتيكو مدريد</a>
+          </div>
+          <div><div class="ssn-col-hdr">إنجلترا</div>
+            <a href="club-profile.html?team=42&league=39" class="ssn-a">آرسنال</a>
+            <a href="club-profile.html?team=40&league=39" class="ssn-a">ليفربول</a>
+            <a href="club-profile.html?team=50&league=39" class="ssn-a">مانشستر سيتي</a>
+          </div>
+          <div><div class="ssn-col-hdr">السعودية</div>
+            <a href="club-profile.html?team=2932&league=307" class="ssn-a">الهلال</a>
+            <a href="club-profile.html?team=2936&league=307" class="ssn-a">النصر</a>
+            <a href="club-profile.html?team=2937&league=307" class="ssn-a">الاتحاد</a>
+          </div>
+        </div></div>
+      </li>
+      <li class="ssn-item" id="ssn-laeb">
+        <button class="ssn-btn" data-drop="ssn-mega-laeb">لاعبون <span class="ssn-chev">▾</span></button>
+        <div class="ssn-mega" id="ssn-mega-laeb"><div class="ssn-grid">
+          <div><div class="ssn-col-hdr">النجوم</div>
+            <a href="player-profile.html?id=278" class="ssn-a">مبابي</a>
+            <a href="player-profile.html?id=1160" class="ssn-a">فينيسيوس</a>
+            <a href="player-profile.html?id=874" class="ssn-a">رونالدو</a>
+            <a href="player-profile.html?id=116" class="ssn-a">بنزيما</a>
+          </div>
+          <div><div class="ssn-col-hdr">البريميرليج</div>
+            <a href="player-profile.html?id=306" class="ssn-a">محمد صلاح</a>
+            <a href="player-profile.html?id=1100" class="ssn-a">هالاند</a>
+            <a href="player-profile.html?id=1471" class="ssn-a">ساكا</a>
+          </div>
+          <div><div class="ssn-col-hdr">السعودية</div>
+            <a href="player-profile.html?id=635" class="ssn-a">محرز</a>
+            <a href="player-profile.html?id=44340" class="ssn-a">سالم الدوسري</a>
+            <a href="player-profile.html?id=386828" class="ssn-a">يامال</a>
+          </div>
+        </div></div>
+      </li>
+    </ul>
+  </div></div>
+  <!-- Row 3: Page tabs -->
+  <div class="page-tab-nav"><nav>
+      <button class="tab-btn active" onclick="switchTab('live')">مباشر</button>
+      <button class="tab-btn" onclick="switchTab('today')">اليوم</button>
+      <button class="tab-btn" onclick="switchTab('standings')">المجموعات</button>
+      <button class="tab-btn" onclick="switchTab('results')">النتائج</button>
+      <button class="tab-btn" onclick="switchTab('fixtures')">الجدول</button>
+      <button class="tab-btn" onclick="switchTab('bracket')">شجرة البطولة</button>
+  </nav></div>
+  <!-- Mobile drawer -->
+  <nav class="mob-drawer" id="mob-drawer">
+    <button class="mob-close" id="mob-close-btn">✕</button>
+    <a href="sports-home.html" class="mob-nav-link">الرئيسية</a>
+    <a href="sports-hub.html" class="mob-nav-link">مباريات اليوم</a>
+    <a href="world-cup.html" class="mob-nav-link cur">كأس العالم 2026</a>
+    <div class="mob-section-hdr">مسابقات</div>
+    <a href="champions-league.html" class="mob-nav-link mob-nav-sub">دوري أبطال أوروبا</a>
+    <a href="saudi-league.html" class="mob-nav-link mob-nav-sub">دوري روشن السعودي</a>
+    <a href="egypt-league.html" class="mob-nav-link mob-nav-sub">الدوري المصري الممتاز</a>
+    <a href="laliga.html" class="mob-nav-link mob-nav-sub">الدوري الإسباني</a>
+    <a href="english-league.html" class="mob-nav-link mob-nav-sub">الدوري الإنجليزي</a>
+    <a href="king-cup.html" class="mob-nav-link mob-nav-sub">كأس الملك السعودي</a>
+  </nav>
+</header>
+<div id="ticker-bar" class="ticker-wrap py-2 bg-gray-900/80 border-b border-gray-800 hidden">
+  <div class="ticker-content" id="ticker-inner"></div>
+</div>
+
+<main class="max-w-7xl mx-auto px-4 py-6">
+
+  <!-- World Cup Countdown/Info Banner -->
+  <div style="background:linear-gradient(135deg,#1e2440 0%,#2a3358 50%,#1e2440 100%);border:1px solid rgba(156,163,175,.32);border-radius:16px;overflow:hidden;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.3)">
+    <div style="height:2px;background:linear-gradient(90deg,transparent 0%,#C8A84B 25%,#f0d878 50%,#C8A84B 75%,transparent 100%)"></div>
+    <div style="display:flex;align-items:center;gap:16px;padding:18px 22px;flex-wrap:wrap">
+      <div style="flex-shrink:0">
+        <img src="/wc-trophy.png" alt="كأس العالم FIFA" style="width:82px;height:auto;filter:drop-shadow(0 4px 18px rgba(200,168,75,.55));display:block">
+      </div>
+      <div style="flex:1;min-width:180px">
+        <p style="font-size:20px;font-weight:900;color:#fff;letter-spacing:.3px;margin:0 0 5px">كأس العالم FIFA 2026</p>
+        <p style="font-size:12.5px;color:rgba(255,255,255,.5);margin:0 0 11px;line-height:1.5">48 منتخباً &nbsp;•&nbsp; 104 مباراة &nbsp;•&nbsp; 16 مدينة مضيفة</p>
+        <div style="display:flex;gap:7px;flex-wrap:wrap">
+          <span style="background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.28);color:#93c5fd;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap">🇺🇸 الولايات المتحدة</span>
+          <span style="background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);color:#fca5a5;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap">🇨🇦 كندا</span>
+          <span style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);color:#86efac;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap">🇲🇽 المكسيك</span>
+        </div>
+      </div>
+      <div id="countdown-box" style="text-align:center;background:rgba(200,168,75,.08);border:1px solid #e2e8f0;border-radius:12px;padding:12px 20px;flex-shrink:0;min-width:120px">
+        <p id="countdown-days" style="font-size:34px;font-weight:900;color:#f0d060;line-height:1;margin:0">
+          <script>document.write(Math.max(0,Math.floor((new Date('2026-06-11')-Date.now())/864e5)));</script>
+        </p>
+        <p id="countdown-lbl" style="font-size:11px;color:rgba(255,255,255,.4);margin:4px 0 0;font-weight:700;letter-spacing:.3px">يوم متبقي</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-live" class="tab-content">
+    <div class="flex items-center gap-3 mb-5">
+      <span class="badge-live text-white text-sm px-3 py-1">LIVE</span>
+      <h2 class="text-xl font-black text-white">المباريات المباشرة</h2>
+      <button onclick="loadLiveMatches()" class="mr-auto text-xs text-yellow-400 hover:text-yellow-300">🔄 تحديث</button>
+    </div>
+    <div id="live-matches-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div class="skeleton h-36"></div><div class="skeleton h-36"></div>
+    </div>
+    <div id="no-live" class="hidden text-center py-16">
+      <p class="text-4xl mb-3">⏸️</p><p class="text-gray-400 font-semibold">لا توجد مباريات مباشرة الآن</p>
+      <p class="text-gray-600 text-sm mt-1">البطولة تبدأ 11 يونيو 2026</p>
+    </div>
+  </div>
+  <div id="tab-today" class="tab-content hidden">
+    <h2 class="text-xl font-black text-white mb-5">مباريات اليوم</h2>
+    <div id="today-matches-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div class="skeleton h-36"></div><div class="skeleton h-36"></div>
+    </div>
+  </div>
+  <div id="tab-standings" class="tab-content hidden">
+    <div id="groups-container" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div class="skeleton h-44 rounded-xl"></div>
+      <div class="skeleton h-44 rounded-xl"></div>
+      <div class="skeleton h-44 rounded-xl"></div>
+    </div>
+  </div>
+  <div id="tab-results" class="tab-content hidden">
+    <h2 class="text-xl font-black text-white mb-5">آخر النتائج</h2>
+    <div id="results-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div class="skeleton h-36"></div><div class="skeleton h-36"></div><div class="skeleton h-36"></div>
+    </div>
+  </div>
+  <div id="tab-fixtures" class="tab-content hidden">
+    <h2 class="text-xl font-black text-white mb-5">جدول المباريات</h2>
+    <div id="fixtures-grid" class="space-y-3">
+      <div class="skeleton h-20"></div><div class="skeleton h-20"></div><div class="skeleton h-20"></div>
+    </div>
+  </div>
+
+  <!-- BRACKET TAB -->
+  <div id="tab-bracket" class="tab-content hidden">
+    <div id="bracket-container">
+      <div class="skeleton h-96 rounded-xl"></div>
+    </div>
+  </div>
+</main>
+
+<div id="match-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+  <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
+  <div class="relative bg-[#141829] border border-gray-700 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto z-10">
+    <div class="p-5 border-b border-gray-700 flex items-start justify-between">
+      <div id="modal-league" class="text-xs text-yellow-400 font-semibold"></div>
+      <button onclick="closeModal()" class="text-gray-500 hover:text-white text-xl">✕</button>
+    </div>
+    <div id="modal-score-section" class="p-6"></div>
+    <div id="modal-info-bar" class="px-6 pb-4 flex flex-wrap gap-3 text-sm text-gray-400"></div>
+    <div class="border-b border-gray-700 px-6 flex gap-4">
+      <button class="modal-tab-btn active pb-3 text-sm font-bold border-b-2 border-yellow-500 text-yellow-400" onclick="switchModalTab('events')">الأحداث</button>
+      <button class="modal-tab-btn pb-3 text-sm font-bold border-b-2 border-transparent text-gray-500" onclick="switchModalTab('lineups')">التشكيلة</button>
+      <button class="modal-tab-btn pb-3 text-sm font-bold border-b-2 border-transparent text-gray-500" onclick="switchModalTab('stats')">الإحصائيات</button>
+      <button class="modal-tab-btn pb-3 text-sm font-bold border-b-2 border-transparent text-gray-500" onclick="switchModalTab('broadcast')">البث</button>
+    </div>
+    <div id="modal-events" class="modal-tab-content p-5 space-y-2 min-h-32"></div>
+    <div id="modal-lineups" class="modal-tab-content p-5 hidden"></div>
+    <div id="modal-stats" class="modal-tab-content p-5 hidden"></div>
+    <div id="modal-broadcast" class="modal-tab-content p-5 hidden"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+let currentTab='live',currentModalTab='events',currentFixtureId=null,liveRefreshTimer=null;
+let loadedTabs=new Set();
+const $=id=>document.getElementById(id);
+function apiCall(path){return fetch(CONFIG.PROXY+'?path='+encodeURIComponent(path)).then(r=>r.json());}
+function formatTime(d){return new Date(d).toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Riyadh'});}
+function formatDate(d){return new Date(d).toLocaleDateString('ar-SA',{weekday:'long',month:'long',day:'numeric',timeZone:'Asia/Riyadh'});}
+function today(){return new Date().toISOString().split('T')[0];}
+function statusLabel(f){const s=f.fixture?.status;if(!s)return '';if(s.short==='FT')return '<span class="text-gray-400 text-xs">انتهت</span>';if(s.short==='1H'||s.short==='2H')return `<span class="badge-live text-white">${s.elapsed}'</span>`;if(s.short==='HT')return '<span class="bg-yellow-600 text-white text-xs px-2 py-0.5 rounded">استراحة</span>';if(s.short==='NS')return `<span class="text-blue-400 text-xs font-bold">${formatTime(f.fixture.date)}</span>`;return `<span class="text-gray-400 text-xs">${s.long||''}</span>`;}
+function teamLogoImg(logo,size=10){return logo?`<img src="${logo}" class="w-${size} h-${size} object-contain" onerror="this.style.display='none'" loading="lazy">`:`<div class="w-${size} h-${size} bg-gray-700 rounded-full"></div>`;}
+function updateClock(){const now=new Date();$('current-time').textContent=now.toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Riyadh'});$('current-date').textContent=now.toLocaleDateString('ar-SA',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:'Asia/Riyadh'});}
+updateClock();setInterval(updateClock,1000);
+
+// Countdown to World Cup
+function updateCountdown(){
+  var el  = document.getElementById('countdown-days');
+  var lbl = document.getElementById('countdown-lbl');
+  if(!el) return;
+  var diff = new Date('2026-06-11') - Date.now();
+  if(diff <= 0){
+    el.textContent  = '0';
+    if(lbl) lbl.textContent = 'البطولة بدأت!';
+  } else {
+    el.textContent = Math.floor(diff / 864e5);
+  }
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+window.addEventListener('load', updateCountdown);
+
+function switchTab(tab){currentTab=tab;localStorage.setItem('sp-tab-'+location.pathname.split('/').pop(),tab);document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active','text-white');b.classList.add('text-white/70');});event.target.classList.add('active','text-white');event.target.classList.remove('text-white/70');document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden'));$(`tab-${tab}`).classList.remove('hidden');if(!loadedTabs.has(tab)){loadedTabs.add(tab);if(tab==='live')loadLiveMatches();if(tab==='today')loadTodayMatches();if(tab==='standings')loadStandings();if(tab==='results')loadResults();if(tab==='fixtures')loadFixtures();if(tab==='bracket')loadBracket();}}
+
+/* ── GROUPS AS CARDS ── */
+async function loadStandings(){
+  var el = document.getElementById('groups-container');
+  try{
+    var data = await apiCall(`/standings?league=${CONFIG.LEAGUE_ID}&season=${CONFIG.SEASON}`);
+    var groups = data?.response?.[0]?.league?.standings || [];
+    if(!groups.length){
+      el.innerHTML='<div class="col-span-3 text-center py-16 text-gray-500 text-sm">المجموعات ستظهر بعد الإعلان عن نتائج القرعة</div>';
+      return;
+    }
+    var LETTERS='ABCDEFGHIJKL';
+    groups = groups.filter(function(g){ return g.length>0 && g[0].team?.name; }).slice(0,12);
+    el.innerHTML = groups.map(function(group,gi){
+      var letter = LETTERS[gi]||String(gi+1);
+      var rows = group.map(function(t,i){
+        var rankCls = i<2?'q':'out';
+        var logo = t.team?.logo ? `<img src="${t.team.logo}" style="width:16px;height:16px;object-fit:contain;flex-shrink:0" onerror="this.style.display='none'">` : '<span style="width:16px;display:inline-block"></span>';
+        return `<div class="grp-row">
+          <span class="grp-rank ${rankCls}">${t.rank}</span>
+          ${logo}
+          <span class="grp-name">${t.team?.name||''}</span>
+          <span class="grp-played">${t.all?.played??0}</span>
+          <span class="grp-pts">${t.points??0}</span>
+        </div>`;
+      }).join('');
+      return `<div class="grp-card">
+        <div class="grp-hdr">
+          <span class="grp-letter">المجموعة ${letter}</span>
+          <span class="grp-lbl">لع · نق</span>
+        </div>
+        ${rows}
+      </div>`;
+    }).join('');
+  }catch(e){
+    el.innerHTML='<div class="col-span-3 text-center py-8 text-gray-500 text-sm">تعذر التحميل</div>';
+  }
+}
+
+/* ── BRACKET ── */
+var bracketTimer = null;
+async function loadBracket(){
+  var el = document.getElementById('bracket-container');
+  var ROUNDS = ['Round of 32','Round of 16','Quarter-finals','Semi-finals','Final'];
+  try{
+    var byRound = [[],[],[],[],[]];
+    var results = await Promise.allSettled(ROUNDS.map(function(r){
+      return apiCall('/fixtures?league='+CONFIG.LEAGUE_ID+'&season='+CONFIG.SEASON+'&round='+encodeURIComponent(r));
+    }));
+    results.forEach(function(res,i){
+      if(res.status==='fulfilled') byRound[i] = res.value?.response||[];
+    });
+    renderBracket(el, byRound);
+  }catch(e){
+    renderBracket(el, [[],[],[],[],[]]);
+  }
+  /* Auto-refresh every 60s when bracket tab is active */
+  clearInterval(bracketTimer);
+  bracketTimer = setInterval(function(){
+    if(currentTab==='bracket'){ loadedTabs.delete('bracket'); loadBracket(); }
+  }, 60000);
+}
+
+function renderBracket(el, byRound){
+  function pad(arr,n){ var r=arr.slice(0,n); while(r.length<n) r.push(null); return r; }
+  function half(arr,s){ var h=Math.ceil(arr.length/2); return s==='L'?arr.slice(0,h):arr.slice(h); }
+
+  var r32=byRound[0]||[], r16=byRound[1]||[], qf=byRound[2]||[], sf=byRound[3]||[], fin=byRound[4]||[];
+  var L32=pad(half(r32,'L'),8), R32=pad(half(r32,'R'),8);
+  var L16=pad(half(r16,'L'),4), R16=pad(half(r16,'R'),4);
+  var LQF=pad(half(qf,'L'),2),  RQF=pad(half(qf,'R'),2);
+  var LSF=pad(half(sf,'L'),1),  RSF=pad(half(sf,'R'),1);
+  var FIN=fin[0]||null;
+
+  /* Flag circle */
+  function flagC(team, sz){
+    var s=sz||20; var isBig=s>30;
+    var cls=isBig?'flag-c-lg':'flag-c';
+    if(!team||!team.name) return '<div class="'+cls+'" style="width:'+s+'px;height:'+s+'px">?</div>';
+    return '<div class="'+cls+'" style="width:'+s+'px;height:'+s+'px"><img src="'+team.logo+'" alt="'+team.name+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<span style=\\\'font-size:'+Math.floor(s*.5)+'px\\\'>'+team.name.charAt(0)+'</span>\'"></div>';
+  }
+
+  /* Team row */
+  function tr(team,score,isWin){
+    var winCls=isWin?' win':'';
+    var sc=score!=null?'<span class="brk-sc">'+score+'</span>':'';
+    if(!team||!team.name) return '<div class="brk-tr'+winCls+'">'+flagC(null,20)+'<span class="brk-tn tbd">سيحدد</span>'+sc+'</div>';
+    return '<div class="brk-tr'+winCls+'">'+flagC(team,20)+'<span class="brk-tn">'+team.name+'</span>'+sc+'</div>';
+  }
+
+  /* Match card */
+  function card(f){
+    var h=f&&f.teams?f.teams.home:null, a=f&&f.teams?f.teams.away:null;
+    var done=f&&/FT|AET|PEN/.test(f.fixture&&f.fixture.status&&f.fixture.status.short||'');
+    var live=f&&/1H|2H|HT|ET|P|BT/.test(f.fixture&&f.fixture.status&&f.fixture.status.short||'');
+    var gh=f&&f.goals?f.goals.home:null, ga=f&&f.goals?f.goals.away:null;
+    var hw=done&&gh!=null&&ga!=null&&gh>ga, aw=done&&gh!=null&&ga!=null&&ga>gh;
+    var showSc=done||live;
+    var id=f&&f.fixture&&f.fixture.id;
+    var open=id?'<a href="match-detail.html?id='+id+'" class="brk-card">':'<div class="brk-card">';
+    var close=id?'</a>':'</div>';
+    return open+tr(h,showSc?gh:null,hw)+tr(a,showSc?ga:null,aw)+close;
+  }
+
+  /* Column */
+  function col(title,matches){
+    var slots=matches.map(function(f){ return '<div class="brk-sw">'+card(f)+'</div>'; }).join('');
+    return '<div class="brk-col"><div class="brk-ctitle">'+title+'</div><div class="brk-slots">'+slots+'</div></div>';
+  }
+
+  /* Connector - side: 'L' uses left borders, 'R' uses right borders */
+  function connector(n, side){
+    var cls='cn-'+side;
+    var pairs='';
+    for(var i=0;i<n;i++) pairs+='<div class="cnpair"><div class="cnt"></div><div class="cnb"></div></div>';
+    return '<div class="'+cls+'"><div class="cntitle">&nbsp;</div><div class="cnbody">'+pairs+'</div></div>';
+  }
+
+  /* Finalist circle (large) */
+  function finalist(team){
+    var name=(team&&team.name)?team.name:'سيحدد';
+    var nameCls=(team&&team.name)?'fin-name':'fin-name tbd';
+    return '<div class="brk-finalist">'+flagC(team,44)+'<div class="'+nameCls+'">'+name+'</div></div>';
+  }
+
+  var finH=FIN&&FIN.teams?FIN.teams.home:null, finA=FIN&&FIN.teams?FIN.teams.away:null;
+  var finDate=FIN?new Date(FIN.fixture&&FIN.fixture.date).toLocaleDateString('ar-SA',{day:'numeric',month:'long'}):'19 يوليو';
+
+  var finalBlock='<div class="brk-final">'
+    +'<div class="brk-ctitle">النهائي</div>'
+    +'<div class="brk-final-body">'
+    +finalist(finH)
+    +'<div class="brk-cup"><img src="/wc-trophy.png"><div class="brk-cup-date">'+finDate+'</div></div>'
+    +finalist(finA)
+    +'</div></div>';
+
+  el.innerHTML=
+    '<div class="brk-outer" id="brk-outer"><div class="brk-main">'
+    +col('دور الـ32',L32)+connector(4,'L')
+    +col('دور الـ16',L16)+connector(2,'L')
+    +col('ربع النهائي',LQF)+connector(1,'L')
+    +col('نصف النهائي',LSF)
+    +finalBlock
+    +col('نصف النهائي',RSF)+connector(1,'R')
+    +col('ربع النهائي',RQF)+connector(2,'R')
+    +col('دور الـ16',R16)+connector(4,'R')
+    +col('دور الـ32',R32)
+    +'</div></div>';
+  /* On desktop: center on Final. On mobile: start at Round of 32 */
+  setTimeout(function(){
+    var outer=document.getElementById('brk-outer');
+    if(!outer) return;
+    if(window.innerWidth>768){
+      var fin=outer.querySelector('.brk-final');
+      if(fin) outer.scrollLeft=fin.offsetLeft-(outer.clientWidth/2)+(fin.offsetWidth/2);
+    } else {
+      outer.scrollLeft=0;
+      brkRoundIdx=0;
+      var lbl=document.getElementById('brk-round-lbl');
+      if(lbl) lbl.textContent=ROUNDS_MOBILE[0];
+    }
+  },60);
+}
+var _brkRounds=['دور الـ32','دور الـ16','ربع النهائي','نصف النهائي','النهائي'];
+var _brkIdx=0;
+function brkNav(dir){
+  var outer=document.getElementById('brk-outer');
+  if(!outer) return;
+  _brkIdx=Math.max(0,Math.min(_brkRounds.length-1,_brkIdx+dir));
+  var lbl=document.getElementById('brk-round-lbl');
+  if(lbl) lbl.textContent=_brkRounds[_brkIdx];
+  /* Each round+connector ≈ 107px; Final is in center at ~4 rounds in */
+  var colW=outer.querySelector('.brk-col');
+  var step=colW?(colW.offsetWidth+20):107;
+  if(_brkIdx===4){
+    var fin=outer.querySelector('.brk-final');
+    if(fin) outer.scrollTo({left:fin.offsetLeft-(outer.clientWidth/2)+(fin.offsetWidth/2),behavior:'smooth'});
+  } else {
+    outer.scrollTo({left:_brkIdx*step,behavior:'smooth'});
+  }
+}
+function buildMatchCard(f){const home=f.teams?.home,away=f.teams?.away,score=f.goals;const isLive=['1H','2H','ET','HT','BT','P'].includes(f.fixture?.status?.short);const isFinished=f.fixture?.status?.short==='FT';const round=f.league?.round?`<span class="text-xs text-yellow-400/70 font-bold">${f.league.round}</span>`:'';const scoreDisplay=(isLive||isFinished)?`<div class="flex items-center gap-3"><span class="text-3xl font-black text-white">${score?.home??0}</span><span class="text-gray-500 text-xl">-</span><span class="text-3xl font-black text-white">${score?.away??0}</span></div>`:`<div class="text-center text-blue-400 font-bold text-sm">${formatTime(f.fixture.date)}</div>`;
+return `<a href="match-detail.html?id=${f.fixture?.id}" class="match-card p-4 block no-underline" style="color:inherit"><div class="flex items-center justify-between mb-3">${statusLabel(f)}${round}</div><div class="flex items-center justify-between gap-2"><div class="flex flex-col items-center gap-2 flex-1">${teamLogoImg(home?.logo,12)}<span class="text-sm font-bold text-center leading-tight">${home?.name||''}</span></div><div class="flex flex-col items-center gap-1 flex-shrink-0 min-w-[80px]">${scoreDisplay}${isLive?'<span class="text-xs text-yellow-400 animate-pulse">● مباشر</span>':''}</div><div class="flex flex-col items-center gap-2 flex-1">${teamLogoImg(away?.logo,12)}<span class="text-sm font-bold text-center leading-tight">${away?.name||''}</span></div></div></a>`;}
+async function loadLiveMatches(){$('live-matches-grid').innerHTML=`<div class="skeleton h-36"></div><div class="skeleton h-36"></div>`;$('no-live').classList.add('hidden');try{const data=await apiCall(`/fixtures?live=${CONFIG.LEAGUE_ID}`);const matches=data?.response||[];if(matches.length>0){$('live-count').classList.remove('hidden');$('live-count').classList.add('flex');$('live-num').textContent=matches.length;updateTicker(matches);}else{$('live-count').classList.add('hidden');apiCall("/fixtures?league=${CONFIG.LEAGUE_ID}&season=${CONFIG.SEASON}&date=${new Date().toISOString().slice(0,10)}").then(d=>updateTicker(d?.response||[])).catch(()=>{});}if(!matches.length){$('live-matches-grid').innerHTML='';$('no-live').classList.remove('hidden');}else{$('live-matches-grid').innerHTML=matches.map(buildMatchCard).join('');}clearTimeout(liveRefreshTimer);if(matches.length>0)liveRefreshTimer=setTimeout(loadLiveMatches,CONFIG.REFRESH_LIVE);}catch(e){$('live-matches-grid').innerHTML='<div class="col-span-3 text-center py-12 text-gray-500">تعذر التحميل</div>';}}
+async function loadTodayMatches(){$('today-matches-grid').innerHTML=`<div class="skeleton h-36"></div><div class="skeleton h-36"></div>`;try{const data=await apiCall(`/fixtures?league=${CONFIG.LEAGUE_ID}&season=${CONFIG.SEASON}&date=${today()}`);const matches=data?.response||[];$('today-matches-grid').innerHTML=matches.length?matches.map(buildMatchCard).join(''):'<div class="col-span-3 text-center py-12 text-gray-500">لا توجد مباريات اليوم</div>';}catch(e){$('today-matches-grid').innerHTML='<div class="col-span-3 text-center py-12 text-gray-500">تعذر التحميل</div>';}}
+async function loadResults(){$('results-grid').innerHTML=`<div class="skeleton h-36"></div><div class="skeleton h-36"></div><div class="skeleton h-36"></div>`;try{const data=await apiCall(`/fixtures?league=${CONFIG.LEAGUE_ID}&season=${CONFIG.SEASON}&from=${CONFIG.S_FROM}&to=${CONFIG.S_TO}&status=FT`);const matches=(data?.response||[]).slice(-18).reverse();$('results-grid').innerHTML=matches.length?matches.map(buildMatchCard).join(''):'<div class="col-span-3 text-center py-12 text-gray-500">النتائج ستظهر بعد بدء البطولة</div>';}catch(e){$('results-grid').innerHTML='<div class="col-span-3 text-center py-12 text-gray-500">تعذر التحميل</div>';}}
+async function loadFixtures(){$('fixtures-grid').innerHTML=`<div class="skeleton h-20"></div><div class="skeleton h-20"></div>`;try{const data=await apiCall(`/fixtures?league=${CONFIG.LEAGUE_ID}&season=${CONFIG.SEASON}&from=${CONFIG.S_FROM}&to=${CONFIG.S_TO}`);const matches=data?.response||[];const grouped={};matches.forEach(f=>{const d=formatDate(f.fixture?.date);if(!grouped[d])grouped[d]=[];grouped[d].push(f);});$('fixtures-grid').innerHTML=Object.entries(grouped).map(([date,fixtures])=>`<div><div class="flex items-center gap-3 my-4"><div class="h-px flex-1 bg-gray-700"></div><span class="text-sm font-bold text-sm font-bold px-3 py-1 rounded-full" style="color:#fff;background:#374151">${date}</span><div class="h-px flex-1 bg-gray-700"></div></div><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">${fixtures.map(buildMatchCard).join('')}</div></div>`).join('')||'<div class="text-center py-16 text-gray-500"><p class="text-4xl mb-3">📅</p><p>جدول المباريات سيُنشر قريباً</p><p class="text-xs mt-2">البطولة تبدأ 11 يونيو 2026</p></div>';}catch(e){$('fixtures-grid').innerHTML='<div class="text-center py-12 text-gray-500">تعذر التحميل</div>';}}
+function updateTicker(matches){if(!matches.length){$('ticker-bar').classList.add('hidden');return;}$('ticker-bar').classList.remove('hidden');const items=matches.map(f=>`<span class="inline-flex items-center gap-2 px-6 text-sm"><span class="text-white font-semibold">${f.teams?.home?.name}</span><span class="text-yellow-400 font-black">${f.goals?.home??0} - ${f.goals?.away??0}</span><span class="text-white font-semibold">${f.teams?.away?.name}</span><span class="text-gray-600 mx-4">|</span></span>`).join('');$('ticker-inner').innerHTML=items+items;}
+function closeModal(){$('match-modal').classList.add('hidden');$('match-modal').classList.remove('flex');}
+function switchModalTab(tab){document.querySelectorAll('.modal-tab-btn').forEach(b=>{b.classList.remove('active','border-yellow-500','text-yellow-400');b.classList.add('border-transparent','text-gray-500');});event.target.classList.add('active','border-yellow-500','text-yellow-400');event.target.classList.remove('border-transparent','text-gray-500');document.querySelectorAll('.modal-tab-content').forEach(c=>c.classList.add('hidden'));$(`modal-${tab}`).classList.remove('hidden');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// Start on fixtures (upcoming WC)
+document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.classList.add('text-white/70');});
+document.querySelectorAll('.tab-btn')[4].classList.add('active','text-white');
+document.querySelectorAll('.tab-btn')[4].classList.remove('text-white/70');
+document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden'));
+$('tab-fixtures').classList.remove('hidden');
+currentTab='fixtures'; loadedTabs.add('fixtures'); loadFixtures();
+loadLiveMatches();
+</script>
+<script>
+/* unified theme toggle (injected 2026-05-25) */
+(function(){ var t=localStorage.getItem('trnd-theme')||'dark'; document.documentElement.classList.add(t+'-theme'); })();
+window.toggleTheme=function(){ var h=document.documentElement; var n=h.classList.contains('dark-theme')?'light':'dark'; h.classList.remove('dark-theme','light-theme'); h.classList.add(n+'-theme'); localStorage.setItem('trnd-theme',n); var b=document.getElementById('theme-toggle'); if(b)b.innerHTML=n==='dark'?'☀️':'🌙'; };
+document.addEventListener('DOMContentLoaded',function(){
+  if(!document.getElementById('theme-toggle')){
+    var host=document.querySelector('.site-header .text-left');
+    if(host&&host.parentElement){
+      var b=document.createElement('button');
+      b.id='theme-toggle'; b.title='تبديل الثيم'; b.className='icon-btn';
+      b.style.marginInlineEnd='8px';
+      b.setAttribute('onclick','toggleTheme()');
+      host.parentElement.insertBefore(b,host);
+    }
+  }
+  var t=localStorage.getItem('trnd-theme')||'dark';
+  var b=document.getElementById('theme-toggle');
+  if(b)b.innerHTML=t==='dark'?'☀️':'🌙';
+});
+
+
+/* ─── Masthead JS ─── */
+(function(){
+  var AR_D=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  var AR_M=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var now=new Date(),el=document.getElementById('hdr-date-val');
+  if(el)el.textContent=AR_D[now.getDay()]+'، '+now.getDate()+' '+AR_M[now.getMonth()]+' '+now.getFullYear();
+  var tb=document.getElementById('theme-toggle');
+  if(tb){var t=localStorage.getItem('trnd-theme')||'dark';tb.innerHTML=t==='dark'?'🌙':'☀️';}
+  var overlay=document.getElementById('mob-overlay'),drawer=document.getElementById('mob-drawer'),menuBtn=document.getElementById('mob-menu-btn'),closeBtn=document.getElementById('mob-close-btn');
+  function openD(){if(drawer&&overlay){drawer.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}}
+  function closeD(){if(drawer&&overlay){drawer.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}}
+  if(menuBtn)menuBtn.addEventListener('click',openD);
+  if(closeBtn)closeBtn.addEventListener('click',closeD);
+  if(overlay)overlay.addEventListener('click',closeD);
+  function posDrop(btn){
+    var item=btn.closest('.ssn-item'),dropId=btn.dataset.drop,drop=dropId?document.getElementById(dropId):null;
+    if(!drop||!item)return;
+    document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});
+    item.classList.add('ssn-open');
+    var rect=btn.getBoundingClientRect();
+    drop.style.top=(rect.bottom+4)+'px';
+    var dw=drop.classList.contains('ssn-mega')?Math.min(540,window.innerWidth-24):220;
+    drop.style.width=dw+'px';
+    var re=window.innerWidth-rect.right;
+    if(re+dw>window.innerWidth-12)re=12;
+    drop.style.right=re+'px';drop.style.left='auto';
+  }
+  document.querySelectorAll('.ssn-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var item=btn.closest('.ssn-item'),was=item&&item.classList.contains('ssn-open');
+      document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});
+      if(!was)posDrop(btn);
+    });
+  });
+  document.addEventListener('click',function(){document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});});
+  window.addEventListener('scroll',function(){document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});},{passive:true});
+})();
+
+/* ── Tab persistence: restore saved tab on reload ── */
+(function(){
+  var key = 'sp-tab-' + location.pathname.split('/').pop();
+  var saved = localStorage.getItem(key);
+  if(saved){
+    /* Find and click the matching tab button */
+    var btns = document.querySelectorAll('.tab-btn');
+    for(var i=0; i<btns.length; i++){
+      var onclick = btns[i].getAttribute('onclick')||'';
+      if(onclick.indexOf("'"+saved+"'") !== -1 || onclick.indexOf('"'+saved+'"') !== -1){
+        try{ btns[i].click(); } catch(e){}
+        break;
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>
+

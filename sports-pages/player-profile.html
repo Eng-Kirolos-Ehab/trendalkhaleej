@@ -1,0 +1,821 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/ts-settings.js"></script>
+  <meta name="description" content="ملف اللاعب الكامل: الإحصائيات، الأهداف، التمريرات، الانتقالات والألقاب على ترند الخليج.">
+  <meta name="keywords" content="ملف اللاعب, إحصائيات اللاعب, أهداف, انتقالات, ألقاب">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://trendalkhaleej.com/player-profile.html">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:site_name" content="ترند الخليج">
+  <meta property="og:title" content="ملف اللاعب — ترند الخليج">
+  <meta property="og:description" content="ملف اللاعب الكامل: الإحصائيات، الأهداف، التمريرات، الانتقالات والألقاب على ترند الخليج.">
+  <meta property="og:url" content="https://trendalkhaleej.com/player-profile.html">
+  <meta property="og:image" content="https://media.api-sports.io/football/leagues/307.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ملف اللاعب — ترند الخليج">
+  <meta name="twitter:description" content="ملف اللاعب الكامل: الإحصائيات، الأهداف، التمريرات، الانتقالات والألقاب على ترند الخليج.">
+  <meta name="twitter:image" content="https://media.api-sports.io/football/leagues/307.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://trendalkhaleej.com/#org","name":"ترند الخليج","url":"https://trendalkhaleej.com/","logo":{"@type":"ImageObject","url":"https://www.trendalkhaleej.com/wp-content/uploads/2020/12/LOGO2.png"}},{"@type":"WebSite","@id":"https://trendalkhaleej.com/#website","url":"https://trendalkhaleej.com/","name":"ترند الخليج","inLanguage":"ar","publisher":{"@id":"https://trendalkhaleej.com/#org"}},{"@type":"WebPage","url":"https://trendalkhaleej.com/player-profile.html","name":"ملف اللاعب — ترند الخليج","description":"ملف اللاعب الكامل: الإحصائيات، الأهداف، التمريرات، الانتقالات والألقاب على ترند الخليج.","inLanguage":"ar","isPartOf":{"@id":"https://trendalkhaleej.com/#website"},"author":{"@id":"https://trendalkhaleej.com/#org"},"publisher":{"@id":"https://trendalkhaleej.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://trendalkhaleej.com/"},{"@type":"ListItem","position":2,"name":"الرياضة","item":"https://trendalkhaleej.com/sports-hub.html"},{"@type":"ListItem","position":3,"name":"ملف اللاعب","item":"https://trendalkhaleej.com/player-profile.html"}]}]}</script>
+<title id="page-title">ملف اللاعب — ترند الخليج</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
+:root{
+  --green:#00843D;--green-d:#005c2b;--green-l:#e8f8ee;
+  --gold:#C8A84B;--gold-l:#fff8e0;
+  --red:#dc2626;--red-l:#fee2e2;
+  --blue:#2563eb;--blue-l:#eff6ff;
+  --bg:#f2f4f7;--white:#fff;--border:#e5e7eb;
+  --ink:#111827;--ink2:#374151;--ink3:#6b7280;--ink4:#9ca3af;
+  --dark:#0f1117;--card:#1a1f2e;
+  --r:12px;
+}
+html.dark-theme{
+  --bg:#111118;--white:#1e2230;--border:#2a2f3e;
+  --ink:#dde0f0;--ink2:#bbbfd6;--ink3:#7c80a0;--ink4:#4e5270;
+  --green-l:#071511;--gold-l:#160e02;--red-l:#180505;--blue-l:#060c1e;
+}
+html.dark-theme body{color:var(--ink)}
+html.dark-theme .main-card{background:var(--white)!important;border-color:var(--border)!important}
+html.dark-theme .stat-box{background:var(--white)!important;border-color:var(--border)!important}
+html.dark-theme .stat-box .stat-lbl{color:var(--ink3)!important}
+html.dark-theme .transfer-row{background:var(--white)!important;border-color:var(--border)!important}
+html.dark-theme .tab-btn-p{color:var(--ink3)!important}
+html.dark-theme .tab-btn-p.active{color:var(--ink)!important;border-color:var(--green)!important}
+html.dark-theme .sk{background:linear-gradient(90deg,#1a1f2e 25%,#252b3b 50%,#1a1f2e 75%);background-size:200% 100%}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:5px}
+.sk{background:linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 50%,#e5e7eb 75%);background-size:200% 100%;animation:sk 1.5s ease infinite;border-radius:10px}
+@keyframes sk{to{background-position:-200% 0}}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#00843D 0%,#005c2b 60%,#003d1c 100%);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:60;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.hdr-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;min-height:56px;gap:12px}
+.back-link{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;font-weight:700;transition:color .15s;flex-shrink:0}
+.back-link:hover{color:#fff}
+.back-link svg{width:16px;height:16px}
+.hdr-title{font-size:14px;font-weight:900;color:#fff}
+.theme-btn{background:rgba(255,255,255,.12);border:none;border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:background .15s;flex-shrink:0}
+.theme-btn:hover{background:rgba(255,255,255,.22)}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0f1117 0%,#1a1a2e 50%,#0f1117 100%);padding:0;overflow:hidden}
+.hero-banner{position:relative;padding:36px 24px 28px;overflow:hidden}
+.hero-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(0,132,61,.22) 0%,transparent 65%)}
+.hero-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:28px;position:relative}
+.player-photo-wrap{flex-shrink:0}
+.player-photo{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.15);overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.player-photo img{width:100%;height:100%;object-fit:cover}
+.player-photo .ph-fallback{font-size:40px;color:rgba(255,255,255,.3)}
+.hero-info{flex:1;min-width:0}
+.hero-pos{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.hero-pos img{width:20px;height:20px;object-fit:contain}
+.player-name{font-size:clamp(22px,5vw,36px);font-weight:900;color:#fff;letter-spacing:.5px;line-height:1.1;margin-bottom:8px}
+.hero-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.meta-tag{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.55);font-weight:600}
+.meta-tag img{width:22px;height:22px;object-fit:contain;border-radius:3px}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat-n{font-size:22px;font-weight:900;color:#fff;line-height:1}
+.hstat-l{font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;font-weight:700}
+
+/* MAIN */
+.page-main{max-width:980px;margin:0 auto;padding:24px 20px 56px}
+
+/* SECTION TABS */
+.section-tabs{display:flex;gap:4px;border-bottom:2px solid var(--border);margin-bottom:20px;overflow-x:auto}
+.tab-btn-p{padding:10px 16px;border:none;border-bottom:3px solid transparent;background:none;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:var(--ink3);cursor:pointer;transition:all .15s;white-space:nowrap;margin-bottom:-2px}
+.tab-btn-p.active{color:var(--green);border-bottom-color:var(--green)}
+.tab-btn-p:hover:not(.active){color:var(--ink);border-bottom-color:var(--border)}
+
+/* STAT BOXES GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:24px}
+.stat-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px;text-align:center;transition:box-shadow .15s}
+.stat-box:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.stat-n{font-size:28px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:4px}
+.stat-n.green{color:var(--green)}
+.stat-n.gold{color:var(--gold)}
+.stat-n.red{color:var(--red)}
+.stat-n.blue{color:var(--blue)}
+.stat-lbl{font-size:10px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.4px}
+
+/* MAIN CARD */
+.main-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:20px}
+.card-hdr{padding:14px 18px;border-bottom:1px solid var(--border);font-size:13px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:8px;background:linear-gradient(to left,rgba(0,132,61,.04),transparent)}
+.card-body{padding:16px 18px}
+
+/* INFO TABLE */
+.info-table{width:100%;border-collapse:collapse}
+.info-table tr{border-bottom:1px solid var(--border)}
+.info-table tr:last-child{border-bottom:none}
+.info-table td{padding:10px 8px;font-size:13px}
+.info-table td:first-child{font-weight:700;color:var(--ink3);width:40%;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.info-table td:last-child{font-weight:700;color:var(--ink)}
+
+/* TRANSFER TIMELINE */
+.transfer-row{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;transition:box-shadow .15s}
+.transfer-row:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.tr-year{font-size:13px;font-weight:900;color:var(--ink3);min-width:44px;text-align:center;flex-shrink:0}
+.tr-arrow{font-size:16px;flex-shrink:0;padding:0 4px}
+.tr-clubs{flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tr-club{display:flex;align-items:center;gap:6px}
+.tr-club img{width:26px;height:26px;object-fit:contain}
+.tr-club-name{font-size:12px;font-weight:700;color:var(--ink)}
+.tr-fee{font-size:11px;font-weight:900;color:var(--gold);flex-shrink:0}
+
+/* SEASON STATS TABLE */
+.szn-table{width:100%;border-collapse:collapse}
+.szn-table th{text-align:right;padding:8px 10px;font-size:10px;font-weight:900;color:var(--ink3);text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid var(--border)}
+.szn-table td{padding:10px 10px;font-size:12px;font-weight:700;color:var(--ink);border-bottom:1px solid var(--border)}
+.szn-table tr:last-child td{border-bottom:none}
+.szn-table tr:hover td{background:rgba(0,132,61,.04)}
+
+/* EMPTY/ERROR */
+.state-empty{text-align:center;padding:48px 20px;color:var(--ink3)}
+.state-empty .ico{font-size:42px;margin-bottom:12px}
+
+/* FOOTER */
+.page-footer{background:var(--dark);margin-top:40px;padding:32px 0 20px}
+.footer-inner{max-width:980px;margin:0 auto;padding:0 20px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:14px;text-align:center;font-size:11px;color:rgba(255,255,255,.25);margin-top:16px}
+
+@media(max-width:600px){
+  .hero-inner{flex-direction:column;align-items:flex-start;gap:14px}
+  .player-photo{width:80px;height:80px}
+  .page-main{padding:16px 12px}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .hdr-title{display:none}
+}
+
+/* ── player footer (club-style 4-column) ── */
+.footer-inner{max-width:980px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:32px}
+.footer-sec h4{font-size:13px;font-weight:900;color:var(--gold);letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px}
+.footer-links{gap:7px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-socials{display:flex;gap:10px;flex-wrap:wrap}
+.social-ico{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:14px;transition:background .15s}
+.social-ico:hover{background:rgba(255,255,255,.16)}
+@media(max-width:640px){.footer-inner{grid-template-columns:1fr 1fr;gap:24px}}
+
+/* ── neutral dark header (match site, 2026-05-25) ── */
+.hdr{ background:#111113!important; border-bottom:1px solid rgba(212,175,95,.35)!important; box-shadow:0 1px 3px rgba(0,0,0,.4)!important; }
+
+/* ── trophies ── */
+.tph-sec{margin-bottom:18px}
+.tph-h{font-size:13px;font-weight:900;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.tph-n{background:var(--green);color:#fff;border-radius:20px;font-size:11px;font-weight:900;padding:1px 9px}
+.tph-row{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:11px 14px;margin-bottom:8px}
+.tph-ic{font-size:22px;flex-shrink:0;line-height:1}
+.tph-info{flex:1;min-width:0}
+.tph-lg{font-size:13px;font-weight:800;color:var(--ink)}
+.tph-meta{font-size:11px;color:var(--ink3);margin-top:2px;line-height:1.4}
+.tph-cnt{font-size:16px;font-weight:900;color:var(--green);flex-shrink:0}
+
+/* ═══ Unified Masthead ═══ */
+.masthead{position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.main-hdr{background:#111113;border-bottom:1px solid rgba(255,255,255,.08);}
+.main-hdr-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;}
+.main-hdr-date{line-height:1.5;}
+.hdr-day-label{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);display:block;text-transform:uppercase;letter-spacing:.4px;}
+.hdr-date-val{font-size:13px;font-weight:800;color:#fff;display:block;}
+.main-hdr-logo{display:flex;justify-content:center;}
+.hdr-logo-link{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.hdr-logo-badge{width:44px;height:44px;border-radius:12px;background:var(--gold,#C8A84B);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#0a0a0a;flex-shrink:0;}
+.hdr-logo-name{font-size:19px;font-weight:900;color:#fff;letter-spacing:-.3px;white-space:nowrap;}
+.main-hdr-right{display:flex;justify-content:flex-end;align-items:center;gap:8px;}
+.hdr-nav{background:#111113;border-bottom:1px solid rgba(255,255,255,.08);}
+.hdr-nav-inner{max-width:1200px;margin:0 auto;}
+.ssn-list{display:flex;align-items:stretch;list-style:none;margin:0;padding:0 4px;overflow-x:auto;scrollbar-width:none;justify-content:center;}
+.ssn-list::-webkit-scrollbar{display:none;}
+.ssn-item{position:relative;flex-shrink:0;display:flex;align-items:stretch;}
+.ssn-link,.ssn-btn{display:flex;align-items:center;gap:4px;padding:11px 13px;font-size:13px;font-weight:700;color:rgba(255,255,255,.55);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;text-decoration:none;font-family:'Cairo',sans-serif;transition:color .15s,border-color .15s;}
+.ssn-link:hover,.ssn-btn:hover{color:#fff;border-bottom-color:var(--gold,#C8A84B);}
+.ssn-link.ssn-active{color:var(--gold,#C8A84B);border-bottom-color:var(--gold,#C8A84B);font-weight:800;}
+.ssn-chev{font-size:9px;opacity:.5;transition:transform .2s;}
+.ssn-item.ssn-open .ssn-chev{transform:rotate(180deg);}
+.ssn-drop,.ssn-mega{display:none;position:fixed;background:#1a1f2e;border:1px solid rgba(255,255,255,.1);border-radius:12px;z-index:9999;box-shadow:0 16px 48px rgba(0,0,0,.7);padding:8px;}
+.ssn-item.ssn-open .ssn-drop,.ssn-item.ssn-open .ssn-mega{display:block;}
+.ssn-mega{width:540px;max-width:calc(100vw - 24px);padding:14px;}
+.ssn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ssn-col-hdr{font-size:11px;font-weight:800;color:var(--gold,#C8A84B);padding:0 4px 7px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:5px;letter-spacing:.3px;}
+.ssn-a{display:block;padding:6px 8px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.8);text-decoration:none;border-radius:8px;transition:background .12s,color .12s;white-space:nowrap;}
+.ssn-a:hover{background:rgba(255,255,255,.06);color:var(--gold,#C8A84B);}
+.ssn-a.locked{color:rgba(255,255,255,.3);pointer-events:none;font-weight:500;}
+.ssn-a.ssn-cur{color:var(--gold,#C8A84B);font-weight:800;}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9998;}
+.mob-overlay.open{display:block;}
+.mob-drawer{position:fixed;top:0;right:0;width:280px;height:100vh;background:#111113;border-left:1px solid rgba(255,255,255,.08);z-index:9999;overflow-y:auto;padding-top:56px;transform:translateX(110%);transition:transform .28s ease;box-shadow:-8px 0 32px rgba(0,0,0,.5);}
+.mob-drawer.open{transform:translateX(0);}
+.mob-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.5);font-size:22px;padding:4px;line-height:1;}
+.mob-close:hover{color:#fff;}
+.mob-nav-link{display:block;padding:13px 20px;font-size:14px;font-weight:700;color:rgba(255,255,255,.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s;}
+.mob-nav-link:hover,.mob-nav-link.cur{color:var(--gold,#C8A84B);}
+.mob-section-hdr{padding:8px 20px 5px;font-size:10px;font-weight:800;color:var(--gold,#C8A84B);letter-spacing:.5px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);margin-top:4px;}
+.mob-nav-sub{padding-right:32px;font-size:13px;font-weight:600;color:rgba(255,255,255,.5);}
+@media(max-width:768px){#mob-menu-btn{display:flex!important;}}
+@media(max-width:640px){.main-hdr-date{display:none;}.hdr-logo-name{font-size:16px;}.hdr-logo-badge{width:38px;height:38px;font-size:18px;}}
+@media(max-width:640px){ .topbar-inner { padding:3px 12px; } .main-hdr-inner { padding:7px 12px; } .ssn-link,.ssn-btn { padding:8px 9px; font-size:12px; } }
+
+/* ── Detail page: theme-aware masthead (light default, dark-theme override) ── */
+.masthead { box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.main-hdr { background: #fff !important; border-bottom: 1px solid #e5e7eb !important; }
+.hdr-nav  { background: #fff !important; border-bottom: 1px solid #e5e7eb !important; }
+.hdr-day-label { color: #9ca3af !important; }
+.hdr-date-val  { color: #111827 !important; }
+.hdr-logo-name { color: #111827 !important; }
+.ssn-link,.ssn-btn { color: #6b7280 !important; }
+.ssn-link:hover,.ssn-btn:hover { color: #C8A84B !important; border-bottom-color: #C8A84B !important; }
+.ssn-link.ssn-active { color: #C8A84B !important; border-bottom-color: #C8A84B !important; }
+.ssn-a { color: #374151 !important; }
+.ssn-a:hover { background: #f3f4f6 !important; color: #C8A84B !important; }
+.ssn-a.locked { color: #d1d5db !important; }
+.ssn-col-hdr { color: #C8A84B !important; border-bottom-color: #e5e7eb !important; }
+.ssn-drop,.ssn-mega { background: #fff !important; border-color: #e5e7eb !important; box-shadow: 0 8px 24px rgba(0,0,0,.1) !important; }
+.mob-drawer { background: #fff !important; border-color: #e5e7eb !important; }
+.mob-nav-link { color: #111827 !important; border-bottom-color: #f3f4f6 !important; }
+.mob-nav-link:hover,.mob-nav-link.cur { color: #C8A84B !important; background: #f9fafb !important; }
+.mob-section-hdr { color: #C8A84B !important; background: #f3f4f6 !important; border-bottom-color: #e5e7eb !important; }
+.mob-nav-sub { color: #6b7280 !important; }
+.mob-close { color: #6b7280 !important; }
+html.dark-theme .main-hdr { background: #1a1f2e !important; border-bottom: 1px solid #2a2f3e !important; }
+html.dark-theme .hdr-nav  { background: #1a1f2e !important; border-bottom: 1px solid #2a2f3e !important; }
+html.dark-theme .hdr-day-label { color: #7c80a0 !important; }
+html.dark-theme .hdr-date-val  { color: #dde0f0 !important; }
+html.dark-theme .hdr-logo-name { color: #dde0f0 !important; }
+html.dark-theme .ssn-link,html.dark-theme .ssn-btn { color: #7c80a0 !important; }
+html.dark-theme .ssn-a { color: #bbbfd6 !important; }
+html.dark-theme .ssn-a:hover { background: #252b3b !important; }
+html.dark-theme .ssn-a.locked { color: #4e5270 !important; }
+html.dark-theme .ssn-col-hdr { border-bottom-color: #2a2f3e !important; }
+html.dark-theme .ssn-drop,html.dark-theme .ssn-mega { background: #1a1f2e !important; border-color: #2a2f3e !important; }
+html.dark-theme .mob-drawer { background: #1a1f2e !important; border-color: #2a2f3e !important; }
+html.dark-theme .mob-nav-link { color: #dde0f0 !important; border-bottom-color: #2a2f3e !important; }
+html.dark-theme .mob-nav-link:hover { background: #252b3b !important; }
+html.dark-theme .mob-section-hdr { background: #252b3b !important; border-bottom-color: #2a2f3e !important; }
+html.dark-theme .mob-nav-sub { color: #7c80a0 !important; }
+html.dark-theme .mob-close { color: #7c80a0 !important; }
+/* Sticky footer */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+#content-wrap { flex: 1; }
+</style>
+<script>
+(function(){
+  /* Unified theme: trnd-theme key, light-theme/dark-theme class */
+  var t = localStorage.getItem('trnd-theme') || 'light';
+  document.documentElement.classList.remove('dark-theme','light-theme');
+  document.documentElement.classList.add(t === 'dark' ? 'dark-theme' : 'light-theme');
+})();
+</script>
+</head>
+<body>
+
+<div class="mob-overlay" id="mob-overlay"></div>
+<header class="masthead">
+  <div class="main-hdr">
+    <div class="main-hdr-inner">
+      <div class="main-hdr-date"><span class="hdr-day-label">اليوم</span><strong class="hdr-date-val" id="hdr-date-val"></strong></div>
+      <div class="main-hdr-logo"><a href="https://trendalkhaleej.com" class="hdr-logo-link"><div class="hdr-logo-badge">ت</div><div class="hdr-logo-name">ترند الخليج</div></a></div>
+      <div class="main-hdr-right">
+        <button id="theme-toggle" onclick="toggleTheme()" title="تبديل الثيم" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s;color:#fff;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.1)'">🌙</button>
+        <button class="icon-btn" id="mob-menu-btn" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;width:34px;height:34px;cursor:pointer;display:none;align-items:center;justify-content:center;color:#fff;" aria-label="القائمة"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="hdr-nav"><div class="hdr-nav-inner">
+    <ul class="ssn-list">
+      <li class="ssn-item"><a href="sports-home.html" class="ssn-link" title="الرئيسية"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a></li>
+      <li class="ssn-item"><a href="sports-hub.html" class="ssn-link">مباريات اليوم</a></li>
+      <li class="ssn-item"><a href="world-cup.html" class="ssn-link">كأس العالم 2026</a></li>
+      <li class="ssn-item" id="ssn-batal">
+        <button class="ssn-btn" data-drop="ssn-mega-batal">مسابقات <span class="ssn-chev">▾</span></button>
+        <div class="ssn-mega" id="ssn-mega-batal"><div class="ssn-grid">
+          <div><div class="ssn-col-hdr">مسابقات عالمية</div>
+            <a href="champions-league.html" class="ssn-a">دوري أبطال أوروبا</a>
+            <a href="world-cup.html" class="ssn-a">كأس العالم 2026</a>
+            <a href="king-cup.html" class="ssn-a">كأس الملك السعودي</a>
+            <a class="ssn-a locked">دوري أبطال آسيا</a>
+          </div>
+          <div><div class="ssn-col-hdr">الدول الأوروبية</div>
+            <a href="laliga.html" class="ssn-a">الدوري الإسباني</a>
+            <a href="english-league.html" class="ssn-a">الدوري الإنجليزي</a>
+            <a class="ssn-a locked">الدوري الإيطالي</a>
+            <a class="ssn-a locked">الدوري الألماني</a>
+          </div>
+          <div><div class="ssn-col-hdr">الدول العربية</div>
+            <a href="saudi-league.html" class="ssn-a">دوري روشن السعودي</a>
+            <a href="egypt-league.html" class="ssn-a">الدوري المصري الممتاز</a>
+            <a class="ssn-a locked">الدوري المغربي</a>
+          </div>
+        </div></div>
+      </li>
+      <li class="ssn-item" id="ssn-frq">
+        <button class="ssn-btn" data-drop="ssn-mega-frq">فرق <span class="ssn-chev">▾</span></button>
+        <div class="ssn-mega" id="ssn-mega-frq"><div class="ssn-grid">
+          <div><div class="ssn-col-hdr">إسبانيا</div>
+            <a href="club-profile.html?team=541&league=140" class="ssn-a">ريال مدريد</a>
+            <a href="club-profile.html?team=529&league=140" class="ssn-a">برشلونة</a>
+          </div>
+          <div><div class="ssn-col-hdr">إنجلترا</div>
+            <a href="club-profile.html?team=42&league=39" class="ssn-a">آرسنال</a>
+            <a href="club-profile.html?team=40&league=39" class="ssn-a">ليفربول</a>
+          </div>
+          <div><div class="ssn-col-hdr">السعودية</div>
+            <a href="club-profile.html?team=2932&league=307" class="ssn-a">الهلال</a>
+            <a href="club-profile.html?team=2936&league=307" class="ssn-a">النصر</a>
+          </div>
+        </div></div>
+      </li>
+      <li class="ssn-item" id="ssn-laeb">
+        <button class="ssn-btn" data-drop="ssn-mega-laeb">لاعبون <span class="ssn-chev">▾</span></button>
+        <div class="ssn-mega" id="ssn-mega-laeb"><div class="ssn-grid">
+          <div><div class="ssn-col-hdr">النجوم</div>
+            <a href="player-profile.html?id=278" class="ssn-a">مبابي</a>
+            <a href="player-profile.html?id=1160" class="ssn-a">فينيسيوس</a>
+            <a href="player-profile.html?id=874" class="ssn-a">رونالدو</a>
+          </div>
+          <div><div class="ssn-col-hdr">البريميرليج</div>
+            <a href="player-profile.html?id=306" class="ssn-a">محمد صلاح</a>
+            <a href="player-profile.html?id=1100" class="ssn-a">هالاند</a>
+          </div>
+          <div><div class="ssn-col-hdr">السعودية</div>
+            <a href="player-profile.html?id=635" class="ssn-a">محرز</a>
+            <a href="player-profile.html?id=44340" class="ssn-a">سالم الدوسري</a>
+          </div>
+        </div></div>
+      </li>
+    </ul>
+  </div></div>
+  <nav class="mob-drawer" id="mob-drawer">
+    <button class="mob-close" id="mob-close-btn">✕</button>
+    <a href="sports-home.html" class="mob-nav-link">الرئيسية</a>
+    <a href="sports-hub.html" class="mob-nav-link">مباريات اليوم</a>
+    <a href="world-cup.html" class="mob-nav-link">كأس العالم 2026</a>
+    <div class="mob-section-hdr">مسابقات</div>
+    <a href="saudi-league.html" class="mob-nav-link mob-nav-sub">الدوري السعودي</a>
+    <a href="egypt-league.html" class="mob-nav-link mob-nav-sub">الدوري المصري</a>
+    <a href="champions-league.html" class="mob-nav-link mob-nav-sub">دوري الأبطال</a>
+    <a href="laliga.html" class="mob-nav-link mob-nav-sub">الدوري الإسباني</a>
+  </nav>
+</header>
+
+
+<div id="content-wrap">
+<!-- HERO LOADING -->
+<div id="hero-loading" class="hero">
+  <div class="hero-banner">
+    <div class="hero-inner">
+      <div class="player-photo-wrap"><div class="player-photo sk"></div></div>
+      <div class="hero-info" style="flex:1">
+        <div class="sk" style="height:12px;width:100px;margin-bottom:10px"></div>
+        <div class="sk" style="height:34px;width:220px;margin-bottom:12px"></div>
+        <div class="sk" style="height:12px;width:160px;margin-bottom:14px"></div>
+        <div style="display:flex;gap:20px">
+          <div class="sk" style="height:30px;width:60px"></div>
+          <div class="sk" style="height:30px;width:60px"></div>
+          <div class="sk" style="height:30px;width:60px"></div>
+          <div class="sk" style="height:30px;width:60px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO CONTENT -->
+<div id="hero-content" class="hero" style="display:none">
+  <div class="hero-banner">
+    <div class="hero-inner">
+      <div class="player-photo-wrap">
+        <div class="player-photo"><img id="player-photo-img" alt=""></div>
+      </div>
+      <div class="hero-info">
+        <div class="hero-pos" id="hero-pos-row"></div>
+        <h1 class="player-name" id="player-name-el">—</h1>
+        <div class="hero-meta" id="hero-meta-el"></div>
+        <div class="hero-stats" id="hero-stats-el"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="page-main" id="page-main" style="display:none">
+  <div class="section-tabs">
+    <button class="tab-btn-p active" data-tab="stats" onclick="switchTab('stats',this)">إحصائيات</button>
+    <button class="tab-btn-p" data-tab="info" onclick="switchTab('info',this)">معلومات</button>
+    <button class="tab-btn-p" data-tab="transfers" onclick="switchTab('transfers',this)">الانتقالات</button>
+    <button class="tab-btn-p" data-tab="trophies" onclick="switchTab('trophies',this)">الألقاب</button>
+  </div>
+
+  <!-- STATS TAB -->
+  <div id="tab-stats">
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="main-card" id="season-card" style="display:none">
+      <div class="card-hdr">إحصائيات المواسم</div>
+      <div class="card-body" style="padding:0 0 4px;overflow-x:auto">
+        <table class="szn-table">
+          <thead><tr>
+            <th>الموسم</th><th>الفريق</th><th>البطولة</th>
+            <th>مباريات</th><th>أهداف</th><th>تمريرات</th>
+            <th>ص</th><th>أ</th>
+          </tr></thead>
+          <tbody id="szn-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO TAB -->
+  <div id="tab-info" style="display:none">
+    <div class="main-card">
+      <div class="card-hdr">معلومات شخصية</div>
+      <div class="card-body" style="padding:0">
+        <table class="info-table" id="info-table"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSFERS TAB -->
+  <div id="tab-transfers" style="display:none">
+    <div id="transfers-list">
+      <div class="sk" style="height:60px;margin-bottom:8px"></div>
+      <div class="sk" style="height:60px;margin-bottom:8px"></div>
+      <div class="sk" style="height:60px"></div>
+    </div>
+  </div>
+
+  <div id="tab-trophies" style="display:none">
+    <div id="trophies-list">
+      <div class="sk" style="height:60px;margin-bottom:8px"></div>
+      <div class="sk" style="height:60px;margin-bottom:8px"></div>
+      <div class="sk" style="height:60px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ERROR -->
+<div id="state-error" style="display:none;text-align:center;padding:80px 20px">
+  <div style="font-size:48px;margin-bottom:16px">👤</div>
+  <p style="font-size:18px;font-weight:900;margin-bottom:8px">تعذر تحميل بيانات اللاعب</p>
+  <a href="sports-hub.html" style="background:var(--green);color:#fff;font-weight:900;padding:12px 24px;border-radius:12px;text-decoration:none;font-size:14px;display:inline-block;margin-top:16px">← الرياضة</a>
+</div>
+
+</div><!-- /content-wrap -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <div class="footer-sec">
+      <h4>وسائل التواصل</h4>
+      <div class="footer-socials">
+        <a class="social-ico" href="https://www.facebook.com/TheSaudiTime/" target="_blank" rel="noopener">f</a>
+        <a class="social-ico" href="https://www.instagram.com/thesauditime/" target="_blank" rel="noopener">ig</a>
+        <a class="social-ico" href="https://x.com/thesauditimes_" target="_blank" rel="noopener">x</a>
+      </div>
+    </div>
+    <div class="footer-sec">
+      <h4>معلومات اللاعب</h4>
+      <div class="footer-links">
+        <a href="javascript:void(0)" onclick="switchTab('stats',document.querySelector('[data-tab=stats]'))">إحصائيات</a>
+        <a href="javascript:void(0)" onclick="switchTab('info',document.querySelector('[data-tab=info]'))">معلومات</a>
+        <a href="javascript:void(0)" onclick="switchTab('transfers',document.querySelector('[data-tab=transfers]'))">الانتقالات</a>
+        <a href="javascript:void(0)" onclick="switchTab('trophies',document.querySelector('[data-tab=trophies]'))">الألقاب</a>
+      </div>
+    </div>
+    <div class="footer-sec">
+      <h4>رياضة</h4>
+      <div class="footer-links">
+        <a href="sports-home.html">الرياضة</a>
+        <a href="saudi-league.html">الدوري السعودي</a>
+        <a href="champions-league.html">دوري الأبطال</a>
+      </div>
+    </div>
+    <div class="footer-sec">
+      <h4>ترند الخليج</h4>
+      <div class="footer-links">
+        <a href="https://trendalkhaleej.com">الرئيسية</a>
+        <a href="sports-home.html">الرياضة</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" style="max-width:980px;margin:0 auto;padding:16px 20px 0;border-top:1px solid rgba(255,255,255,.08)">
+    © 2025 ترند الخليج — بيانات اللاعبين: API-Football
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+// ---- THEME ----
+(function(){
+  const t = localStorage.getItem('trnd-theme') || 'light';
+  document.documentElement.classList.add(t+'-theme');
+})();
+window.toggleTheme = function(){
+  const html = document.documentElement;
+  const next = html.classList.contains('dark-theme') ? 'light' : 'dark';
+  html.classList.remove('dark-theme','light-theme');
+  html.classList.add(next+'-theme');
+  localStorage.setItem('trnd-theme', next);
+  const b = document.getElementById('theme-toggle');
+  if(b) b.innerHTML = next === 'dark' ? '🌙' : '☀️';
+};
+document.addEventListener('DOMContentLoaded', function(){
+  const t = localStorage.getItem('trnd-theme') || 'light';
+  const b = document.getElementById('theme-toggle');
+  if(b) b.innerHTML = t === 'dark' ? '☀️' : '🌙';
+});
+
+// ---- CORE ----
+const PROXY = '/koora-api.php';
+const params = new URLSearchParams(location.search);
+const PLAYER_ID = params.get('id') || '';
+const SEASON = parseInt(params.get('season') || '2025');
+const api = p => fetch(`${PROXY}?path=${encodeURIComponent(p)}`).then(r => r.json());
+
+const POS_AR = { Goalkeeper:'حارس مرمى', Defender:'مدافع', Midfielder:'وسط', Attacker:'مهاجم', Forward:'مهاجم' };
+
+function posAr(p) { return POS_AR[p] || p || '—'; }
+
+const TABS_P = ['stats','info','transfers','trophies'];
+let transfersLoaded = false;
+let trophiesLoaded = false;
+function switchTab(name, btn) {
+  TABS_P.forEach(t => {
+    const el = document.getElementById('tab-'+t);
+    if(el) el.style.display = t===name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tab-btn-p').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  if(name === 'transfers' && !transfersLoaded) { transfersLoaded = true; loadTransfers(); }
+  if(name === 'trophies' && !trophiesLoaded) { trophiesLoaded = true; loadTrophies(); }
+}
+
+async function init() {
+  if(!PLAYER_ID || PLAYER_ID === '0') { showError(); return; }
+  try {
+    /* Try requested season, then walk back up to 3 seasons to find data */
+    let rec = null;
+    for(let s = SEASON; s >= SEASON - 3 && !rec; s--) {
+      const d = await api(`/players?id=${PLAYER_ID}&season=${s}`);
+      rec = d?.response?.[0];
+    }
+    if(!rec) { showError(); return; }
+    const p = rec.player, stats = rec.statistics || [];
+
+    document.title = `${p.name} — ترند الخليج`;
+    (function(){
+      const t = document.title;
+      const d = `إحصائيات وأهداف وتمريرات وانتقالات وألقاب اللاعب ${p.name}${p.nationality?(' ('+p.nationality+')'):''} على ترند الخليج.`;
+      const u = `https://trendalkhaleej.com/player-profile.html?id=${PLAYER_ID}`;
+      const S = (s,a,v)=>{const e=document.head.querySelector(s); if(e) e.setAttribute(a,v);};
+      S('meta[name="description"]','content',d); S('meta[property="og:description"]','content',d); S('meta[name="twitter:description"]','content',d);
+      S('meta[property="og:title"]','content',t); S('meta[name="twitter:title"]','content',t);
+      S('link[rel="canonical"]','href',u); S('meta[property="og:url"]','content',u);
+      if(p.photo){ S('meta[property="og:image"]','content',p.photo); S('meta[name="twitter:image"]','content',p.photo); }
+    })();
+    const hdrTitle = document.getElementById('hdr-title');
+    if(hdrTitle) hdrTitle.textContent = p.name;
+    document.title = `${p.name} — ترند الخليج`;
+
+    renderHero(p, stats);
+    renderStatsTab(p, stats);
+    renderInfoTab(p, stats);
+
+    document.getElementById('hero-loading').style.display = 'none';
+    document.getElementById('hero-content').style.display = 'block';
+    document.getElementById('page-main').style.display = 'block';
+  } catch(e) { console.error(e); showError(); }
+}
+
+function renderHero(p, stats) {
+  const photo = document.getElementById('player-photo-img');
+  if(photo){
+    photo.onerror = function(){ this.parentElement.innerHTML = '<span class="ph-fallback">👤</span>'; };
+    photo.src = p.photo || '';
+  }
+
+  const mainStat = stats[0];
+  const team = mainStat?.team;
+  const league = mainStat?.league;
+  const pos = mainStat?.games?.position || p.position || '';
+
+  /* position + team row */
+  document.getElementById('hero-pos-row').innerHTML =
+    (team?.logo ? `<img src="${team.logo}" alt="" loading="lazy">` : '') +
+    `<span>${team?.name || ''}</span>` +
+    (pos ? `<span style="background:rgba(200,168,75,.2);border:1px solid #e2e8f0;border-radius:20px;padding:2px 10px;font-size:10px;letter-spacing:.5px">${posAr(pos)}</span>` : '');
+
+  document.getElementById('player-name-el').textContent = p.name;
+
+  /* meta: nationality, age, height */
+  const metas = [];
+  if(p.nationality) metas.push(`<span class="meta-tag"><span>🌍</span><span>${p.nationality}</span></span>`);
+  if(p.age) metas.push(`<span class="meta-tag"><span>🎂</span><span>${p.age} سنة</span></span>`);
+  if(p.height) metas.push(`<span class="meta-tag"><span>📏</span><span>${p.height}</span></span>`);
+  if(p.weight) metas.push(`<span class="meta-tag"><span>⚖️</span><span>${p.weight}</span></span>`);
+  document.getElementById('hero-meta-el').innerHTML = metas.join('');
+
+  /* hero stats: goals, assists, appearances across all stats entries of current season */
+  const totGoals = stats.reduce((s,st) => s+(st.goals?.total||0),0);
+  const totAssists = stats.reduce((s,st) => s+(st.goals?.assists||0),0);
+  const totApps = stats.reduce((s,st) => s+(st.games?.appearences||0),0);
+  const totMins = stats.reduce((s,st) => s+(st.games?.minutes||0),0);
+
+  document.getElementById('hero-stats-el').innerHTML = [
+    `<div class="hstat"><div class="hstat-n">${totApps}</div><div class="hstat-l">مباراة</div></div>`,
+    `<div class="hstat"><div class="hstat-n" style="color:#4ade80">${totGoals}</div><div class="hstat-l">هدف</div></div>`,
+    `<div class="hstat"><div class="hstat-n" style="color:var(--gold)">${totAssists}</div><div class="hstat-l">تمريرة</div></div>`,
+    totMins ? `<div class="hstat"><div class="hstat-n" style="color:#60a5fa">${totMins}'</div><div class="hstat-l">دقيقة</div></div>` : '',
+  ].join('');
+}
+
+function renderStatsTab(p, stats) {
+  const mainStat = stats[0] || {};
+  const g = mainStat.goals || {};
+  const gm = mainStat.games || {};
+  const cr = mainStat.cards || {};
+  const sh = mainStat.shots || {};
+  const dr = mainStat.dribbles || {};
+  const ps = mainStat.passes || {};
+
+  const boxes = [
+    { n: gm.appearences||0, lbl:'مباريات', cls:'' },
+    { n: gm.minutes||0, lbl:'دقائق', cls:'blue' },
+    { n: g.total||0, lbl:'أهداف', cls:'green' },
+    { n: g.assists||0, lbl:'تمريرات', cls:'gold' },
+    { n: sh.total||0, lbl:'تسديدات', cls:'' },
+    { n: sh.on||0, lbl:'على المرمى', cls:'green' },
+    { n: dr.success||0, lbl:'مراوغات', cls:'' },
+    { n: ps.accuracy ? ps.accuracy+'%' : '—', lbl:'دقة التمرير', cls:'' },
+    { n: cr.yellow||0, lbl:'ص. صفراء', cls:'gold' },
+    { n: cr.red||0, lbl:'ص. حمراء', cls:'red' },
+    { n: gm.rating ? parseFloat(gm.rating).toFixed(1) : '—', lbl:'التقييم', cls:'green' },
+    { n: gm.lineups||0, lbl:'في التشكيلة', cls:'' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = boxes.map(b =>
+    `<div class="stat-box">
+      <div class="stat-n ${b.cls}">${b.n}</div>
+      <div class="stat-lbl">${b.lbl}</div>
+    </div>`
+  ).join('');
+
+  /* seasons table */
+  if(stats.length > 1) {
+    const card = document.getElementById('season-card');
+    card.style.display = 'block';
+    document.getElementById('szn-tbody').innerHTML = stats.map(st => {
+      const sg = st.goals || {};
+      const sgm = st.games || {};
+      const scr = st.cards || {};
+      return `<tr>
+        <td>${st.league?.season || '—'}</td>
+        <td><div style="display:flex;align-items:center;gap:6px">
+          ${st.team?.logo ? `<img src="${st.team.logo}" style="width:18px;height:18px;object-fit:contain" onerror="this.style.display='none'">` : ''}
+          <span>${st.team?.name || '—'}</span>
+        </div></td>
+        <td>${st.league?.name || '—'}</td>
+        <td style="text-align:center">${sgm.appearences||0}</td>
+        <td style="text-align:center;color:var(--green);font-weight:900">${sg.total||0}</td>
+        <td style="text-align:center;color:var(--gold);font-weight:900">${sg.assists||0}</td>
+        <td style="text-align:center;color:#eab308">${scr.yellow||0}</td>
+        <td style="text-align:center;color:var(--red)">${scr.red||0}</td>
+      </tr>`;
+    }).join('');
+  }
+}
+
+function renderInfoTab(p, stats) {
+  const mainStat = stats[0];
+  const rows = [
+    ['الاسم الكامل', p.name],
+    ['الجنسية', p.nationality],
+    ['تاريخ الميلاد', p.birth?.date ? new Date(p.birth.date).toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'}) : '—'],
+    ['مكان الميلاد', [p.birth?.place, p.birth?.country].filter(Boolean).join('، ') || '—'],
+    ['الطول', p.height || '—'],
+    ['الوزن', p.weight || '—'],
+    ['المركز', posAr(mainStat?.games?.position || p.position)],
+    ['النادي الحالي', mainStat?.team?.name || '—'],
+    ['رقم القميص', mainStat?.games?.number || '—'],
+  ];
+  document.getElementById('info-table').innerHTML = rows.map(([k,v]) =>
+    `<tr><td>${k}</td><td>${v || '—'}</td></tr>`
+  ).join('');
+}
+
+async function loadTrophies() {
+  const el = document.getElementById('trophies-list');
+  try {
+    const data = await api(`/trophies?player=${PLAYER_ID}`);
+    const all = data?.response || [];
+    if(!all.length) { el.innerHTML = '<div class="state-empty"><div class="ico">🏆</div><p>لا توجد ألقاب مسجلة</p></div>'; return; }
+    const isWin = p => /winner/i.test(p||'');
+    const winners = all.filter(t => isWin(t.place));
+    const runners = all.filter(t => !isWin(t.place));
+    const summarize = list => {
+      const m = {};
+      list.forEach(t => { const k = t.league||'—'; if(!m[k]) m[k] = {count:0, country:t.country, seasons:[]}; m[k].count++; if(t.season) m[k].seasons.push(t.season); });
+      return Object.entries(m).sort((a,b)=>b[1].count-a[1].count);
+    };
+    const section = (title, icon, list) => {
+      if(!list.length) return '';
+      return `<div class="tph-sec"><div class="tph-h">${icon} ${title} <span class="tph-n">${list.length}</span></div>${summarize(list).map(([lg,info])=>`
+        <div class="tph-row">
+          <div class="tph-ic">${icon}</div>
+          <div class="tph-info"><div class="tph-lg">${lg}</div><div class="tph-meta">${info.country||''}${info.seasons.length?' · '+info.seasons.slice(0,7).join('، ')+(info.seasons.length>7?'…':''):''}</div></div>
+          ${info.count>1?`<div class="tph-cnt">×${info.count}</div>`:''}
+        </div>`).join('')}</div>`;
+    };
+    el.innerHTML = section('بطولات','🏆',winners) + section('وصافة','🥈',runners);
+  } catch(e) {
+    el.innerHTML = '<div class="state-empty"><div class="ico">⚠️</div><p>تعذر تحميل الألقاب</p></div>';
+  }
+}
+
+async function loadTransfers() {
+  const el = document.getElementById('transfers-list');
+  try {
+    const data = await api(`/transfers?player=${PLAYER_ID}`);
+    const transfers = data?.response?.[0]?.transfers?.reverse() || [];
+    if(!transfers.length) {
+      el.innerHTML = '<div class="state-empty"><div class="ico">🔄</div><p>لا توجد بيانات انتقالات</p></div>';
+      return;
+    }
+    el.innerHTML = transfers.map(t => {
+      const year = t.date ? t.date.split('-')[0] : '—';
+      const fee = t.type || '—';
+      return `<div class="transfer-row">
+        <div class="tr-year">${year}</div>
+        <div class="tr-clubs">
+          <div class="tr-club">
+            ${t.teams?.out?.logo ? `<img src="${t.teams.out.logo}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+            <span class="tr-club-name">${t.teams?.out?.name||'—'}</span>
+          </div>
+          <div class="tr-arrow">→</div>
+          <div class="tr-club">
+            ${t.teams?.in?.logo ? `<img src="${t.teams.in.logo}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+            <span class="tr-club-name" style="color:var(--green)">${t.teams?.in?.name||'—'}</span>
+          </div>
+        </div>
+        <div class="tr-fee">${fee}</div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    el.innerHTML = '<div class="state-empty"><div class="ico">⚠️</div><p>تعذر تحميل الانتقالات</p></div>';
+  }
+}
+
+function showError() {
+  document.getElementById('hero-loading').style.display = 'none';
+  document.getElementById('state-error').style.display = 'block';
+}
+
+init();
+
+/* ─── Masthead JS ─── */
+(function(){
+  var AR_D=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  var AR_M=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var now=new Date(),el=document.getElementById('hdr-date-val');
+  if(el)el.textContent=AR_D[now.getDay()]+'، '+now.getDate()+' '+AR_M[now.getMonth()]+' '+now.getFullYear();
+  var overlay=document.getElementById('mob-overlay'),drawer=document.getElementById('mob-drawer'),menuBtn=document.getElementById('mob-menu-btn'),closeBtn=document.getElementById('mob-close-btn');
+  function openD(){if(drawer&&overlay){drawer.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}}
+  function closeD(){if(drawer&&overlay){drawer.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}}
+  if(menuBtn)menuBtn.addEventListener('click',openD);
+  if(closeBtn)closeBtn.addEventListener('click',closeD);
+  if(overlay)overlay.addEventListener('click',closeD);
+  function posDrop(btn){
+    var item=btn.closest('.ssn-item'),dropId=btn.dataset.drop,drop=dropId?document.getElementById(dropId):null;
+    if(!drop||!item)return;
+    document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});
+    item.classList.add('ssn-open');
+    var rect=btn.getBoundingClientRect();
+    drop.style.top=(rect.bottom+4)+'px';
+    var dw=drop.classList.contains('ssn-mega')?Math.min(540,window.innerWidth-24):220;
+    drop.style.width=dw+'px';
+    var re=window.innerWidth-rect.right;
+    if(re+dw>window.innerWidth-12)re=12;
+    drop.style.right=re+'px';drop.style.left='auto';
+  }
+  document.querySelectorAll('.ssn-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var item=btn.closest('.ssn-item'),was=item&&item.classList.contains('ssn-open');
+      document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});
+      if(!was)posDrop(btn);
+    });
+  });
+  document.addEventListener('click',function(){document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});});
+  window.addEventListener('scroll',function(){document.querySelectorAll('.ssn-item.ssn-open').forEach(function(i){i.classList.remove('ssn-open');});},{passive:true});
+})();
+</script>
+</body>
+</html>
